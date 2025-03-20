@@ -1,0 +1,57 @@
+/* Dashboard Cards Styling */
+.dashboard-container {
+    max-width: calc(100vw - 276px);
+    position: relative;
+    top: 66px;
+    left: 260px;
+    transition: all 0.3s ease;
+}
+
+.toggled-dashboard-container {
+    max-width: calc(100vw - 86px);
+    position: relative;
+    top: 66px;
+    left: 70px;
+    transition: all 0.3s ease;
+}
+
+.dashboard-card {
+    height: 208px;
+    width: 392px;
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.toggled-dashboard-card {
+    height: 208px;
+    width: 456px;
+    transition: all 0.3s ease;
+}
+
+.card-icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.card-action-link {
+    color: #495057;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.card-action-link:hover {
+    color: #007bff;
+    background-color: rgba(0, 123, 255, 0.1);
+}
