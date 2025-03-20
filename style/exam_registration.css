@@ -1,0 +1,16 @@
+/* Exam Registration Container Styling */
+.exam-registration-container {
+    max-width: calc(100vw - 276px);
+    position: relative;
+    top: 66px;
+    left: 260px;
+    transition: all 0.3s ease;
+}
+
+.toggled-exam-registration-container {
+    max-width: calc(100vw - 86px);
+    position: relative;
+    top: 66px;
+    left: 70px;
+    transition: all 0.3s ease;
+}
