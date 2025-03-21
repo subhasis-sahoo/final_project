@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style/sidebar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="style/dashboard.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="style/exam_registration.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="style/registration_card.css?v=<?php echo time(); ?>">
 
     <style>
         * {
