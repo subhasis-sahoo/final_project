@@ -5,10 +5,10 @@ include_once 'index.php';
 ?>
 
 <!-- Main Content -->
-<div class="col-md-9 col-lg-10 ml-sm-auto px-4 exam-registration-container">
+<div class="container-fluid mt-3 mx-0 px-4 exam-registration-container">
     <!-- Page Header -->
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h2>Exam Registration</h2>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
+        <h2 class="mb-3">Exam Registration</h2>
         <div class="btn-toolbar mb-2 mb-md-0">
             <a href="dashboard.php" class="btn btn-sm btn-outline-secondary">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
@@ -44,12 +44,17 @@ include_once 'index.php';
                 <p class="mt-2">Loading subjects...</p>
             </div>
 
+            <!-- Message for students for their dues -->
+            <div id="warningBox" class="text-danger d-none">
+                <i class="fas fa-exclamation-triangle"></i> <span class="fw-bold" id="warning-msg" style="font-size: .85rem;">Note: Because of out standing dues you need to request HOD of Account section to allow your exam registration with an application!!!</span>
+            </div>
+
             <!-- No subjects found message (initially hidden) -->
             <div id="noSubjectsFound" class="alert alert-warning d-none" role="alert">
                 <i class="fas fa-exclamation-triangle"></i> No subjects found for the specified semester.
             </div>
 
-            <form id="registrationForm" class="d-none mb-3" action="test.php" method="post">
+            <form id="registrationForm" class="d-none my-1" action="test.php" method="post">
                 <!-- Subject selection table for exam registration -->
                 <div class="table-responsive form-group">
                     <table class="table table-hover table-bordered border-secondary rounded-3">
@@ -71,20 +76,19 @@ include_once 'index.php';
                 <div class="form-group">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="declaration" required>
-                        <label class="custom-control-label" for="declaration">
+                        <label class="custom-control-label fw-medium" for="declaration" style="font-size: .9rem;">
                             I hereby declare that all the information provided is correct and I agree to the <a href="#" class="text-decoration-none fw-medium">terms and conditions</a>
                         </label>
                     </div>
                 </div>
 
-                <div class="form-group mt-3 d-flex gap-2">
+                <div class="form-group mt-2 d-flex gap-2">
                     <input type="submit" value="Register" id="registerButton" class="btn btn-success px-3" disabled></input>
                     <a href="dashboard.php" class="btn btn-secondary px-3">Cancel</a>
                 </div>
             </form>
 
-            <!-- Message for students for their dues -->
-            <div id="message" class="fs-6 mb-0 text-danger text-center fw-medium">*** Because of out standing dues you need to request HOD of Account section to allow your exam registration with an application!!! ***</div>
+            
         </div>
     </div>
 </div>

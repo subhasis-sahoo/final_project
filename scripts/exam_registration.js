@@ -1,14 +1,35 @@
 // Exam Registration Page JavaScript
+
+const sidebarToggle = document.getElementById('sidebarToggle');
+const body = document.body;
+const examRegistrationContainer = document.querySelector(".exam-registration-container")
+
 const searchButton = document.getElementById("searchButton");
 const semesterSearch = document.getElementById("semesterSearch");
 const loadingIndicator = document.getElementById("loadingIndicator");
+const warningBox = document.getElementById('warningBox');
 const noSubjectsFound = document.getElementById('noSubjectsFound');
 const registrationForm = document.getElementById('registrationForm');
 const declaration = document.getElementById('declaration');
 const registerButton = document.getElementById('registerButton');
 
 
-// const checkedSubjectList = []; 
+// Toggle sidebar on button click
+// if (sidebarToggle) {
+sidebarToggle.addEventListener('click', function () {
+
+    // console.log("hello")
+    if (examRegistrationContainer.classList.contains('exam-registration-container')) {
+        examRegistrationContainer.classList.remove('exam-registration-container');
+        examRegistrationContainer.classList.add('toggled-exam-registration-container');
+    } else {
+        examRegistrationContainer.classList.add('exam-registration-container');
+        examRegistrationContainer.classList.remove('toggled-exam-registration-container');
+    }
+
+});
+// }
+
 
 // Sample subject data for different semesters
 const subjectsData = {
@@ -17,42 +38,42 @@ const subjectsData = {
             sl: "1",
             subject: "INTERNET TECHNOLOGY & APPLICATIONS(25C99S3T15)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "2",
             subject: "DATABASE MANAGEMENT SYSTEMS(25C99S3T16)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "3",
             subject: "OBJECT ORIENTED PROGRAMMING(25C99S3T17)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "4",
             subject: "COMPUTER NETWORKS(25C99S3T18)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false",
         },
         {
             sl: "5",
             subject: "DISCRETE MATHEMATICS(25C99S3T19)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "6",
             subject: "PROFESSIONAL COMMUNICATION(25C99S3T20)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         }
     ],
@@ -61,35 +82,35 @@ const subjectsData = {
             sl: "1",
             subject: "DATA STRUCTURES AND ALGORITHMS(25C99S4T21)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "2",
             subject: "OPERATING SYSTEMS(25C99S4T22)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "3",
             subject: "SOFTWARE ENGINEERING(25C99S4T23)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "4",
             subject: "WEB DEVELOPMENT(25C99S4T24)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "5",
             subject: "COMPUTER ARCHITECTURE(25C99S4T25)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         }
     ],
@@ -98,42 +119,42 @@ const subjectsData = {
             sl: "1",
             subject: "ARTIFICIAL INTELLIGENCE(25C99S5T26)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "2",
             subject: "MACHINE LEARNING(25C99S5T27)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "3",
             subject: "CLOUD COMPUTING(25C99S5T28)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "4",
             subject: "MOBILE APPLICATION DEVELOPMENT(25C99S5T29)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "5",
             subject: "INFORMATION SECURITY(25C99S5T30)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "6",
             subject: "BIG DATA ANALYTICS(25C99S5T31)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         }
     ],
@@ -142,35 +163,35 @@ const subjectsData = {
             sl: "1",
             subject: "BLOCKCHAIN TECHNOLOGY(25C99S6T32)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "2",
             subject: "INTERNET OF THINGS(25C99S6T33)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "3",
             subject: "NATURAL LANGUAGE PROCESSING(25C99S6T34)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "4",
             subject: "DIGITAL IMAGE PROCESSING(25C99S6T35)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         },
         {
             sl: "5",
             subject: "ETHICAL HACKING(25C99S6T36)",
             amount: 0,
-            registration_date: "16-9-2025", 
+            registration_date: "16-9-2025",
             status: "false"
         }
     ]
@@ -182,6 +203,7 @@ searchButton.addEventListener("click", function () {
 
     // Hide previous results
     registrationForm.classList.add('d-none');
+    warningBox.classList.add('d-none');
     noSubjectsFound.classList.add('d-none');
 
     // Showing loding indicator
@@ -194,6 +216,9 @@ searchButton.addEventListener("click", function () {
 
         // Checking if semester is valid or not
         if (subjectsData[semester]) {
+            // Showing warning message
+            warningBox.classList.remove('d-none');
+
             // generate subject list with checkboxes inside table body
             generateSubjectList(subjectsData[semester]);
 
@@ -224,7 +249,7 @@ function generateSubjectList(subjects) {
             <td class="fw-medium p-2 text-center" style="font-size: .8rem;">${subject.registration_date}</td>
             <td class="fw-medium p-2 text-center" style="font-size: .8rem;">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input subject-checkbox w-100 h-100" value="${subject.subject}" id="subject${subject.sl}">
+                    <input type="checkbox" class="custom-control-input subject-checkbox w-100 h-100">
                 </div>
             </td>
         </tr>
@@ -258,17 +283,17 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     const checkedSubjectList = [];
     const semester = semesterSearch.value.trim();
 
-    document.querySelectorAll('.subject-checkbox:checked').forEach((ele) => {
-        const checkedBoxValue = document.getElementById(`${ele.id}`).value;
-        checkedSubjectList.push(subjectsData[semester].filter((subject) => {
-            return subject.subject === checkedBoxValue;
-        }));
-    });
+    // document.querySelectorAll('.subject-checkbox:checked').forEach((ele) => {
+    //     const checkedBoxValue = document.getElementById(`${ele.id}`).value;
+    //     checkedSubjectList.push(subjectsData[semester].filter((subject) => {
+    //         return subject.subject === checkedBoxValue;
+    //     }));
+    // });
 
-    console.log(checkedSubjectList);
+    // console.log(checkedSubjectList);
 
     // checkedSubjectList = 
 
     alert("Your form is submited successfully.")
-    // window.location = "test.php";
+    window.location = "registration_card.php";
 });
