@@ -1,7 +1,7 @@
 <?php
 // Include header file which contains the main structure
 include_once 'index.php';
-
+$_SESSION['sic'] = "25MMCI19";
 ?>
 
 <!-- Main Content -->
@@ -46,11 +46,12 @@ include_once 'index.php';
 
             <!-- Message for students for their dues -->
             <div id="warningBox" class="text-danger d-none">
-                <i class="fas fa-exclamation-triangle"></i> <span class="fw-bold" id="warning-msg" style="font-size: .85rem;">Note: Because of out standing dues you need to request HOD of Account section to allow your exam registration with an application!!!</span>
+                <i class="fas fa-exclamation-triangle"></i>
+                <span class="fw-bold" id="warningMsg" style="font-size: .85rem;">Note: Because of out standing dues you need to request HOD of Account section to allow your exam registration with an application!!!</span>
             </div>
 
             <!-- No subjects found message (initially hidden) -->
-            <div id="noSubjectsFound" class="alert alert-warning d-none" role="alert">
+            <div id="noSubjectsFound" class="alert alert-danger d-none" role="alert">
                 <i class="fas fa-exclamation-triangle"></i> No subjects found for the specified semester.
             </div>
 
