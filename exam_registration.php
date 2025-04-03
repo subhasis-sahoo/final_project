@@ -26,15 +26,15 @@ include_once 'index.php';
         <!-- Card Body -->
         <div class="card-body">
             <!-- Semester Search Bar -->
-            <div class="form-group mb-3">
+            <form id="searchBarForm" class="form-group mb-3" action="subject_data.php" method="post">
                 <label for="semesterSearch" class="fw-semibold mb-1"><i class="fas fa-search"></i> Search Your Semester</label>
                 <div class="input-group d-flex gap-2">
-                    <input type="text" class="form-control rounded-3 border border-secondary outline-none" id="semesterSearch" placeholder="Enter semester (e.g. 4)">
+                    <input type="text" class="form-control rounded-3 border border-secondary outline-none" id="semesterSearch" name="semester" placeholder="Enter semester (e.g. 4)" autocomplete="off">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary px-4" type="button" id="searchButton">Search</button>
+                        <input type="submit" value="Search" class="btn btn-outline-secondary px-4" id="searchButton">
                     </div>
                 </div>
-            </div>
+            </form>
 
             <!-- Loading indicator (initially hidden) -->
             <div id="loadingIndicator" class="text-center my-4 d-none">
@@ -54,7 +54,7 @@ include_once 'index.php';
                 <i class="fas fa-exclamation-triangle"></i> No subjects found for the specified semester.
             </div>
 
-            <form id="registrationForm" class="d-none my-1" action="test.php" method="post">
+            <form id="registrationForm" class="d-none my-1" action="" method="post">
                 <!-- Subject selection table for exam registration -->
                 <div class="table-responsive form-group">
                     <table class="table table-hover table-bordered border-secondary rounded-3">

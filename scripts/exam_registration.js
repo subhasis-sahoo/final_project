@@ -4,6 +4,7 @@ const sidebarToggle = document.getElementById('sidebarToggle');
 const body = document.body;
 const examRegistrationContainer = document.querySelector(".exam-registration-container")
 
+const searchBarForm = document.getElementById("searchBarForm");
 const searchButton = document.getElementById("searchButton");
 const semesterSearch = document.getElementById("semesterSearch");
 const loadingIndicator = document.getElementById("loadingIndicator");
@@ -29,6 +30,28 @@ sidebarToggle.addEventListener('click', function () {
 
 });
 // }
+
+searchBarForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    try {
+        // Get form data
+        const formData = new FormData(this);
+
+        const response = await fetch("subject_data.php", {
+            method: "POST",
+            body: formData
+        });
+
+        // Parse the response data
+        const data = await response.json(); // Use .text() if not returning JSON
+        console.log(data); // This will show the actual data
+
+
+    } catch (error) {
+        console.log("Error: ", error);
+    }
+})
 
 
 // Sample subject data for different semesters
@@ -278,7 +301,7 @@ declaration.addEventListener('change', function () {
 });
 
 // Form submission
-document.getElementById('registrationForm').addEventListener('submit', function (e) {
+registrationForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const checkedSubjectList = [];
     const semester = semesterSearch.value.trim();
