@@ -25,4 +25,4 @@ It is a group project that elements physical presence of a student for exam regi
 
 - [Subhasis sahoo](https://github.com/subhasis-sahoo)
 - [Ranjeet Parida](https://github.com/RanjeetParida)
-- [Smurti Ranjan Behera](https://github.com/RanjeetParida)
+- [Smurti Ranjan Behera](https://github.com/smruti030)

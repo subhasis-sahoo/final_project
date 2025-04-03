@@ -94,42 +94,7 @@ searchBarForm.addEventListener('submit', function (e) {
 });
 
 
-/*
-// Search button click event
-searchButton.addEventListener("click", function () {
-    const semester = semesterSearch.value.trim();
-
-    // Hide previous results
-    registrationForm.classList.add('d-none');
-    warningBox.classList.add('d-none');
-    noSubjectsFound.classList.add('d-none');
-
-    // Showing loding indicator
-    loadingIndicator.classList.remove("d-none")
-
-    // Simulate server request delay
-    setTimeout(function () {
-        // Hide loading indicator
-        loadingIndicator.classList.add('d-none');
-
-        // Checking if semester is valid or not
-        if (subjectsData[semester]) {
-            // Showing warning message
-            warningBox.classList.remove('d-none');
-
-            // generate subject list with checkboxes inside table body
-            generateSubjectList(subjectsData[semester]);
-
-            // Show registration form
-            registrationForm.classList.remove('d-none');
-        } else {
-            // Show no subjects found message
-            noSubjectsFound.classList.remove('d-none');
-        }
-    }, 1000)
-});
-*/
-
+// It generates the subject list in a table format
 function generateSubjectList(subjects) {
     const tableBody = document.getElementById("tableBody");
 
