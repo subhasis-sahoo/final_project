@@ -1,2 +1,5 @@
 # In this folder I generally test my codes what I want to build.
 test/
+
+# Database connection file
+dbconnect.php
