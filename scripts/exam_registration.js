@@ -15,9 +15,10 @@ const registrationForm = document.getElementById('registrationForm');
 const declaration = document.getElementById('declaration');
 const registerButton = document.getElementById('registerButton');
 
+// Variable to store subjects lise for exam registration
+let registeredSubjectList = {};
 
 // Toggle sidebar on button click
-// if (sidebarToggle) {
 sidebarToggle.addEventListener('click', function () {
 
     // console.log("hello")
@@ -30,7 +31,7 @@ sidebarToggle.addEventListener('click', function () {
     }
 
 });
-// }
+
 
 searchBarForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -68,6 +69,9 @@ searchBarForm.addEventListener('submit', function (e) {
                 // Parse the response data
                 const data = await response.json(); // Use .text() if not returning JSON
                 console.log(data);
+
+                // Assigned the response data to registeredSubjectList
+                registeredSubjectList = data;
 
                 if (data.status === "false") {
                     noSubjectsFound.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${data.msg}`;
@@ -159,6 +163,8 @@ registrationForm.addEventListener('submit', function (e) {
 
     // checkedSubjectList = 
 
-    alert("Your form is submited successfully.")
-    window.location = "registration_card.php";
+    console.log(registeredSubjectList);
+    
+    // alert("Your form is submited successfully.")
+    // window.location = "registration_card.php";
 });
