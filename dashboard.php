@@ -14,7 +14,7 @@ $dashboardCards = [
             'Deadline' => 'March 25, 2025'
         ],
         'actions' => [
-            ['text' => 'Register Now', 'icon' => 'fa-check-circle', 'link' => 'exam_registration.php'],
+            ['text' => 'Register Now', 'icon' => 'fa-check-circle', 'link' => 'exam_registration_form.php'],
             ['text' => 'View Details', 'icon' => 'fa-info-circle', 'link' => 'registration-details.php']
         ]
     ],
