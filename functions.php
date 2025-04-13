@@ -82,4 +82,45 @@
         }
     }
 
+    // Check if the student is already registerd for the exam
+    function isStudnetRegistered($sic) {
+        $conn = getConnection();
+
+        try {
+            $qry = "SELECT registration_id FROM exam_registrations WHERE student_sic=?";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("s", $sic);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if($result->num_rows > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
+    // add examRegistration data into exam_registration table
+    function addExamRegistrationData($sic, $examRegistrationData) {
+        $conn = getConnection();
+
+        try {
+            $qry = "INSERT INTO exam_registrations(student_sic, 	registration_data) VALUES(?, ?)";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("ss", $sic, $examRegistrationData);
+            $result = $stmt->execute();
+
+            return $result;
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
 ?>

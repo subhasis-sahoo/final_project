@@ -1,13 +1,13 @@
 <?php
-session_start();
+    session_start();
 
-$searched_semester = $_POST['semester'];
-$sic = $_SESSION['sic'];
-$response = [];
+    $searched_semester = $_POST['semester'];
+    $sic = $_SESSION['sic'];
+    $response = [];
 
-require_once "functions.php";
+    require_once "functions.php";
 
-$student_semester = getSemester($sic)->fetch_assoc();
+    $student_semester = getSemester($sic)->fetch_assoc();
 
 if ($student_semester['semester'] != $searched_semester) {
     $response = [
