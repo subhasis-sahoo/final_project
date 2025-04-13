@@ -2,6 +2,11 @@
 // Include header file which contains the main structure
 include_once 'index.php';
 $_SESSION['sic'] = "25MMCI19";
+
+$sic = $_SESSION['sic'];
+require_once "functions.php";
+
+$is_registered = isStudnetRegistered($sic);
 ?>
 
 <!-- Main Content -->
@@ -31,7 +36,7 @@ $_SESSION['sic'] = "25MMCI19";
                 <div class="input-group d-flex gap-2">
                     <input type="text" class="form-control rounded-3 border border-secondary outline-none" id="semesterSearch" name="semester" placeholder="Enter semester (e.g. 4)" autocomplete="off">
                     <div class="input-group-append">
-                        <input type="submit" value="Search" class="btn btn-outline-secondary px-4" id="searchButton">
+                        <input type="submit" value="Search" class="btn btn-outline-secondary px-4 <?php $is_registered == 1 ? print "disabled" : print "" ?>" id="searchButton">
                     </div>
                 </div>
             </form>
@@ -55,6 +60,12 @@ $_SESSION['sic'] = "25MMCI19";
                 <i class="fas fa-exclamation-triangle"></i> No subjects found for the specified semester.
             </div>
 
+            <!-- Button to view registration form if student is already registered -->
+            <div id="viewNowBtn" class="mt-2 <?php $is_registered == 1 ? print "" : print "d-none" ?> ">
+                <a href="./registration_card.php" class="btn btn-success" >View Now</a>
+            </div>
+
+            <!-- Table with all subjects list of the repextive semesters -->
             <form id="registrationForm" class="d-none my-1" action="" method="post">
                 <!-- Subject selection table for exam registration -->
                 <div class="table-responsive form-group">
@@ -89,7 +100,6 @@ $_SESSION['sic'] = "25MMCI19";
                 </div>
             </form>
 
-            
         </div>
     </div>
 </div>

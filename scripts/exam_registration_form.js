@@ -172,17 +172,26 @@ registrationForm.addEventListener('submit', async function (e) {
     try {
         const response = await fetch("exam_registration.php", {
             method: "POST",
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(examRegistrationData)
         });
 
         // Parse the response data
         const data = await response.json(); // Use .text() if not returning JSON
-        console.log(data);
+        console.log("Sent Data: ", data);
+
+        if(data.status === "fail") {
+            console.log(data.msg);
+        } else {
+            console.log(data.msg);
+        }
 
     } catch(error) {
         console.log("Error while exam registration: ", error);
     }
     
-    // alert("Your form is submited successfully.")
-    // window.location = "registration_card.php";
+    // alert("Your form is submited successfully.");
+    window.location = "registration_card.php";
 });
