@@ -13,7 +13,7 @@ It is a group project that elements physical presence of a student for exam regi
 ## Database Model
 
 - [Project models link](https://app.eraser.io/workspace/674WPbnQsyz28av6XtcB?origin=share)
-<img src="../public/assets/Database_design_img.png">
+<img src="./public/assets/Database_design_img.png">
 
 ## Installation
 1. Fork the project
