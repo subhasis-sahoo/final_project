@@ -13,13 +13,13 @@ It is a group project that elements physical presence of a student for exam regi
 ## Database Model
 
 - [Project models link](https://app.eraser.io/workspace/674WPbnQsyz28av6XtcB?origin=share)
-<img src="./assets/Database_design_img.png">
+<img src="../public/assets/Database_design_img.png">
 
 ## Installation
 1. Fork the project
 2. Clone the project
 3. Open XAMPP server and start Apache
-4. Open chrome with the URl: [Project URL](http://localhost/php_projects/project_x/dashboard.php)
+4. Open chrome with the URl: [Project URL](http://localhost/php_projects/project_x/students/index.php)
 
 ## Contributors
 
