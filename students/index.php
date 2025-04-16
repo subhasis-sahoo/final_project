@@ -1,6 +1,6 @@
 <?php
 // Including header.php
-include_once "index.php";
+include_once "../header.php";
 
 
 // Sample data for cards - In a real application, this would come from a database

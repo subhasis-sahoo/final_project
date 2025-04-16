@@ -1,7 +1,7 @@
 <?php
 // Include header file which contains the main structure
-include_once 'index.php';
-$_SESSION['sic'] = "25MMCI19";
+include_once '../header.php';
+$_SESSION['sic'] = "25MMCI27";
 
 $sic = $_SESSION['sic'];
 require_once "functions.php";
@@ -15,7 +15,7 @@ $is_registered = isStudnetRegistered($sic);
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h2 class="mb-3">Exam Registration</h2>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="dashboard.php" class="btn btn-sm btn-outline-secondary">
+            <a href="index.php" class="btn btn-sm btn-outline-secondary">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
         </div>
@@ -79,8 +79,7 @@ $is_registered = isStudnetRegistered($sic);
                                 <th class="text-center">Registration Status</th>
                             </tr>
                         </thead>
-                        <tbody id="tableBody">
-                            
+                        <tbody id="tableBody">     
                         </tbody>
                     </table>
                 </div>
@@ -96,7 +95,7 @@ $is_registered = isStudnetRegistered($sic);
 
                 <div class="form-group mt-2 d-flex gap-2">
                     <input type="submit" value="Register" id="registerButton" class="btn btn-success px-3" disabled></input>
-                    <a href="dashboard.php" class="btn btn-secondary px-3">Cancel</a>
+                    <a href="index.php" class="btn btn-secondary px-3">Cancel</a>
                 </div>
             </form>
 

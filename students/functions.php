@@ -1,5 +1,5 @@
 <?php
-    require_once "dbconnect.php";
+    require_once "../dbconnect.php";
 
     // Return student's semester from the students table
     function getSemester($sic) {
@@ -62,6 +62,26 @@
         }
     }
 
+    // Returns student's registred subjects list and dues data from exam_registration table
+    function getRegistrationData($sic) {
+        $conn = getConnection();
+
+        try {
+            $qry = "SELECT registration_data FROM exam_registrations WHERE student_sic=?";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("s", $sic);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result;
+            
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
     // Return due of the student from student_dues table
     function getStudentDue($sic) {
         $conn = getConnection();
@@ -82,7 +102,7 @@
         }
     }
 
-    // Check if the student is already registerd for the exam
+    // Returns true if the student is already registerd for the exam else flase
     function isStudnetRegistered($sic) {
         $conn = getConnection();
 
@@ -110,7 +130,7 @@
         $conn = getConnection();
 
         try {
-            $qry = "INSERT INTO exam_registrations(student_sic, 	registration_data) VALUES(?, ?)";
+            $qry = "INSERT INTO exam_registrations(student_sic, registration_data) VALUES(?, ?)";
             $stmt = $conn->prepare($qry);
             $stmt->bind_param("ss", $sic, $examRegistrationData);
             $result = $stmt->execute();
@@ -123,4 +143,23 @@
         }
     }
 
+    // Returns detils of a student form students table
+    function getStudentsDetails($sic) {
+        $conn = getConnection();
+
+        try {
+            $qry = "SELECT * FROM students WHERE sic=?";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("s", $sic);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result;
+            
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
 ?>

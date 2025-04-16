@@ -14,11 +14,11 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style/index.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="style/sidebar.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="style/dashboard.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="style/exam_registration.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="style/registration_card.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../sidebar.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./style/dashboard.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./style/exam_registration.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./style/registration_card.css?v=<?php echo time(); ?>">
 
     <style>
         * {
@@ -27,6 +27,10 @@
             padding: 0;
         }
     </style>
+
+    <!-- Script for download exam registration form as pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -38,7 +42,7 @@
                 <!-- University Logo and Name -->
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand" href="https://silicon.ac.in" target="_blank">
-                        <img src="./assets/silicon_logo.png" alt="Silicon University Logo" class="university-logo">
+                        <img src="../public/assets/silicon_logo.png" alt="Silicon University Logo" class="university-logo">
                     </a>
                 </div>
 
@@ -66,7 +70,7 @@
 
                     <!-- User Profile -->
                     <div class="d-flex justify-content-center align-item-center gap-2 user-profile dropdown">
-                        <img src="./assets/Subhasis_Sahoo-Photo.jpg" alt="user_image" height="36px" class="user_image">
+                        <img src="../public/assets/Subhasis_Sahoo-Photo.jpg" alt="user_image" height="36px" class="user_image">
                         <div class="my-auto fs-6 text-white user_name">Subhasis Sahoo</div>
                         <div class="my-auto fs-6 text-white user_roll">(Student)</div>
                     </div>
@@ -78,8 +82,7 @@
     include_once "sidebar.php";
     // include_once "dashboard.php";
     ?>
-    <script src="./scripts/sidebar.js?v=<?php echo time(); ?>"></script>
-    <!-- <script src="./scripts/dashbaord.js"></script> -->
+    <script src="../sidebar.js?v=<?php echo time(); ?>"></script>
 </body>
 
 </html>
