@@ -15,7 +15,7 @@ $dashboardCards = [
         ],
         'actions' => [
             ['text' => 'Register Now', 'icon' => 'fa-check-circle', 'link' => 'exam_registration_form.php'],
-            ['text' => 'View Details', 'icon' => 'fa-info-circle', 'link' => 'registration-details.php']
+            ['text' => 'Terms & Conditions', 'icon' => 'fa-info-circle', 'link' => 'exam_registration_terms.php']
         ]
     ],
     [
@@ -216,7 +216,7 @@ function renderDashboardCards($card) {
 
 
 <!-- Dashboard Grid -->
-<div class="container-fluid mt-3 mx-0 px-4 dashboard-container ">
+<div class="container-fluid mt-3 mx-0 px-4 dashboard-container main-container">
     <div class="mb-3 border-bottom">
         <h2 class="mb-3">Dashboard</h2>
     </div>
@@ -342,4 +342,4 @@ function renderDashboardCards($card) {
 </div>
 
 
-<script src="./scripts/dashbaord.js?v=<?php echo time(); ?>"></script>
+<script src="./scripts/index.js?v=<?php echo time(); ?>"></script>

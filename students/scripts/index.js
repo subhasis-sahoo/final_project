@@ -1,18 +1,17 @@
 // dashboard.js
 const sidebarToggle = document.getElementById('sidebarToggle');
 const body = document.body;
+const mainContainer = document.querySelector(".main-container")
 const dashboardCard = document.querySelectorAll(".dashboard-card")
-const dashboardContainer = document.querySelector(".dashboard-container")
 
 
 // Toggle sidebar on button click
-// if (sidebarToggle) {
 sidebarToggle.addEventListener('click', function () {
 
     // console.log("hello")
-    if (dashboardContainer.classList.contains('dashboard-container')) {
-        dashboardContainer.classList.remove('dashboard-container');
-        dashboardContainer.classList.add('toggled-dashboard-container');
+    if (mainContainer.classList.contains('main-container')) {
+        mainContainer.classList.remove('main-container');
+        mainContainer.classList.add('toggled-main-container');
 
         // console.log(dashboardCard);
 
@@ -22,8 +21,8 @@ sidebarToggle.addEventListener('click', function () {
         });
 
     } else {
-        dashboardContainer.classList.add('dashboard-container');
-        dashboardContainer.classList.remove('toggled-dashboard-container');
+        mainContainer.classList.add('main-container');
+        mainContainer.classList.remove('toggled-main-container');
 
         dashboardCard.forEach(element => {
             element.classList.add('dashboard-card')
@@ -32,4 +31,3 @@ sidebarToggle.addEventListener('click', function () {
     }
 
 });
-// }

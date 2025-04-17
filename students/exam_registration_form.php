@@ -7,6 +7,10 @@ $sic = $_SESSION['sic'];
 require_once "functions.php";
 
 $is_registered = isStudnetRegistered($sic);
+
+// $_SERVER['SCRIPT_NAME'] gives the whole url
+// strrpos($_SERVER['SCRIPT_NAME'], "/") Finding first occourane of '/' from the reverse of the url.
+$page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/")+1); // Accessing clicked php file by substring function
 ?>
 
 <!-- Main Content -->
@@ -22,14 +26,25 @@ $is_registered = isStudnetRegistered($sic);
     </div>
 
     <!-- Page Body -->
-    <div class="card mb-3">
-        <!-- Card Header -->
-        <div class="card-header bg-primary text-white">
-            <i class="fas fa-pen-to-square"></i> Exam Registration Form
+    <div class="card border-0 mb-3">
+        <!-- Navigation style card header -->
+        <div class="card-header overflow-hidden border-0 bg-white p-0">
+            <ul class="d-flex gap-0 nav nav-tabs border-0">
+                <li class="nav-item bg-light border border-light-1 border-bottom-0 rounded-top-2">
+                    <a class="nav-link border-0 rounded-top-2 nav-items exam-form <?php $page == 'exam_registration_form.php' ? print "bg-primary text-white" : print "bg-light text-secondary" ?>" id="examForm" href="exam_registration_form.php">
+                        <i class="fas fa-pen-to-square"></i> Exam Registration Form
+                    </a>
+                </li>
+                <li class="nav-item bg-light border border-light-1 border-bottom-0 rounded-top-2">
+                    <a class="nav-link border-0 rounded-top-2 nav-items exam-term <?php $page == 'exam_registration_terms.php' ? print "bg-primary text-white" : print "bg-light text-secondary" ?>"  id="examTerm" href="exam_registration_terms.php">
+                        <i class="fas fa-info-circle"></i> Terms & conditions
+                    </a>
+                </li>
+            </ul>
         </div>
 
         <!-- Card Body -->
-        <div class="card-body">
+        <div class="card-body border border-light-1 rounded-bottom-2">
             <!-- Semester Search Bar -->
             <form id="searchBarForm" class="form-group mb-3" action="subject_data.php" method="post">
                 <label for="semesterSearch" class="fw-semibold mb-1"><i class="fas fa-search"></i> Search Your Semester</label>

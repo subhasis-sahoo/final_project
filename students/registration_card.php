@@ -145,22 +145,6 @@ $date = date("d/m/y");
                 </table>
             </div>
 
-            <!-- Terms and Conditions for exam registration -->
-            <!-- <div class="card">
-                <div class="card-header bg-info text-white">
-                    <i class="fas fa-info-circle"></i> Important Information
-                </div>
-                <div class="card-body">
-                    <ul>
-                        <li>Registration is mandatory for all students appearing in the examination.</li>
-                        <li>Payment must be completed before the registration deadline (March 25, 2025).</li>
-                        <li>Late registration will incur additional fees of Rs. 500.</li>
-                        <li>Once registered, you can download your admit card after payment verification.</li>
-                        <li>For any queries, please contact the examination department.</li>
-                    </ul>
-                </div>
-            </div> -->
-
             <!-- Footer Section -->
             <div class="d-flex flex-column mt-auto mx-1">
                 <div class="footer-item d-flex justify-content-between mb-5 fw-medium" style="font-size: 0.9rem;">

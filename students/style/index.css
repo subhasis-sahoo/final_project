@@ -1,5 +1,5 @@
 /* Dashboard Cards Styling */
-.dashboard-container {
+.main-container {
     max-width: calc(100vw - 276px);
     position: relative;
     top: 66px;
@@ -7,7 +7,7 @@
     transition: all 0.3s ease;
 }
 
-.toggled-dashboard-container {
+.toggled-main-container {
     max-width: calc(100vw - 86px);
     position: relative;
     top: 66px;
