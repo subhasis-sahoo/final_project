@@ -8,7 +8,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
 ?>
 
 <!-- Main Content -->
-<div class="container-fluid mt-3 mx-0 px-4 exam-terms-container">
+<div class="container-fluid mt-3 mx-0 px-4 main-container">
     <!-- Page Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h2 class="mb-3">Terms & Conditions</h2>
@@ -51,4 +51,5 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
     </div>
 </div>
 
-<script src="./scripts/exam_registration_terms.js?v=<?php echo time(); ?>"></script>
+<!-- Script to manage sidebar toggle -->
+<script src="./scripts/index.js?v=<?php echo time(); ?>"></script>

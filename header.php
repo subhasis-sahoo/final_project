@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="../header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../sidebar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/index.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./style/exam_registration_form.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./style/exam_registration_terms.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/registration_card.css?v=<?php echo time(); ?>">
 
     <style>

@@ -1,26 +1,11 @@
-const registrationCardContainer = document.querySelector('.registration-card-container')
 const registrationForm = document.getElementById('registrationForm');
 const downloadBtn = document.getElementById('downloadBtn');
-
-// Toggle sidebar on button click
-sidebarToggle.addEventListener('click', function () {
-    if (registrationCardContainer.classList.contains('registration-card-container')) {
-        registrationCardContainer.classList.remove('registration-card-container');
-        registrationCardContainer.classList.add('toggled-registration-card-container');
-    } else {
-        registrationCardContainer.classList.add('registration-card-container');
-        registrationCardContainer.classList.remove('toggled-registration-card-container');
-    }
-});
-
 
 downloadBtn.addEventListener('click', function () {
     const studentName = document.getElementById('studentName').innerHTML.replace(" ", "_");
     const studentSic = document.getElementById('studentSic').innerHTML;
-
-    console.log(studentName, studentSic);
+    // console.log(studentName, studentSic);
     
-
     const opt = {
         margin: 0,
         filename: `${studentName}(${studentSic})_exam_registration_card.pdf`,

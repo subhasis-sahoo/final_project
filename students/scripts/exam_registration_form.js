@@ -1,7 +1,4 @@
 // Exam Registration Page JavaScript
-const sidebarToggle = document.getElementById('sidebarToggle');
-const body = document.body;
-const examRegistrationContainer = document.querySelector(".exam-registration-container");
 const searchBarForm = document.getElementById("searchBarForm");
 const searchButton = document.getElementById("searchButton");
 const semesterSearch = document.getElementById("semesterSearch");
@@ -15,21 +12,6 @@ const registerButton = document.getElementById('registerButton');
 
 // Variable to store subjects list for exam registration
 let examRegistrationData = {};
-
-// Toggle sidebar on button click
-sidebarToggle.addEventListener('click', function () {
-
-    // console.log("hello")
-    if (examRegistrationContainer.classList.contains('exam-registration-container')) {
-        examRegistrationContainer.classList.remove('exam-registration-container');
-        examRegistrationContainer.classList.add('toggled-exam-registration-container');
-    } else {
-        examRegistrationContainer.classList.add('exam-registration-container');
-        examRegistrationContainer.classList.remove('toggled-exam-registration-container');
-    }
-
-});
-
 
 searchBarForm.addEventListener('submit', function (e) {
     e.preventDefault();

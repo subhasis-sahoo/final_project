@@ -34,7 +34,7 @@ $date = date("d/m/y");
 
 ?>
 
-<div class="container-fluid mt-3 mx-0 px-4 registration-card-container">
+<div class="container-fluid mt-3 mx-0 px-4 main-container">
     <!-- Page Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h2 class="mb-3">Registration Card</h2>
@@ -178,4 +178,8 @@ $date = date("d/m/y");
     </div>
 </div>
 
+<!-- Script to manage sidebar toggle -->
+<script src="./scripts/index.js?v=<?php echo time(); ?>"></script>
+
+<!-- Script for registration card page -->
 <script src="./scripts/registration_card.js?v=<?php echo time(); ?>"></script>
