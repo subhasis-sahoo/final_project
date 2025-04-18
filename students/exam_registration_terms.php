@@ -13,7 +13,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h2 class="mb-3">Terms & Conditions</h2>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="index.php" class="btn btn-sm btn-outline-secondary">
+            <a href="dashboard.php" class="btn btn-sm btn-outline-secondary">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
         </div>
@@ -38,7 +38,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
         </div>
 
         <!-- Card Body -->
-        <div class="card-body border border-light-1 rounded-bottom-2">
+        <div class="card-body px-4 border rounded-bottom-2 shadow-sm">
             <!-- Terms and Conditions for exam registration -->
             <ul>
                 <li>Registration is mandatory for all students appearing in the examination.</li>
@@ -52,4 +52,4 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
 </div>
 
 <!-- Script to manage sidebar toggle -->
-<script src="./scripts/index.js?v=<?php echo time(); ?>"></script>
+<script src="./scripts/dashboard.js?v=<?php echo time(); ?>"></script>

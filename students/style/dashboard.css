@@ -1,5 +1,5 @@
 /* Dashboard Cards Styling */
-.main-container {
+/* .main-container {
     max-width: calc(100vw - 276px);
     position: relative;
     top: 66px;
@@ -13,7 +13,7 @@
     top: 66px;
     left: 70px;
     transition: all 0.3s ease;
-}
+} */
 
 .dashboard-card {
     height: 208px;

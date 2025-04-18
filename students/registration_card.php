@@ -39,7 +39,7 @@ $date = date("d/m/y");
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h2 class="mb-3">Registration Card</h2>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="index.php" class="btn btn-sm btn-outline-secondary">
+            <a href="dashboard.php" class="btn btn-sm btn-outline-secondary">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
         </div>
@@ -179,7 +179,7 @@ $date = date("d/m/y");
 </div>
 
 <!-- Script to manage sidebar toggle -->
-<script src="./scripts/index.js?v=<?php echo time(); ?>"></script>
+<script src="./scripts/dashboard.js?v=<?php echo time(); ?>"></script>
 
 <!-- Script for registration card page -->
 <script src="./scripts/registration_card.js?v=<?php echo time(); ?>"></script>

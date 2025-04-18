@@ -40,9 +40,9 @@ $dashboardCards = [
             'Approved' => '2'
         ],
         'actions' => [
-            ['text' => 'New Application', 'icon' => 'fa-plus', 'link' => 'new-application.php'],
+            ['text' => 'New Application', 'icon' => 'fa-plus', 'link' => 'new_application.php'],
             ['text' => 'Track Status', 'icon' => 'fa-search', 'link' => 'track-application.php'],
-            ['text' => 'History', 'icon' => 'fa-history', 'link' => 'application-history.php']
+            ['text' => 'History', 'icon' => 'fa-history', 'link' => 'application_history.php']
         ]
     ],
     [
@@ -342,4 +342,4 @@ function renderDashboardCards($card) {
 </div>
 
 
-<script src="./scripts/index.js?v=<?php echo time(); ?>"></script>
+<script src="./scripts/dashboard.js?v=<?php echo time(); ?>"></script>

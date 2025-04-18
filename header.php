@@ -16,8 +16,10 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../sidebar.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./style/index.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./style/common.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./style/dashboard.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/registration_card.css?v=<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="./style/new_application.css?v=<?php echo time(); ?>"> -->
 
     <style>
         * {
