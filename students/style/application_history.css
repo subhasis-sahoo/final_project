@@ -1,0 +1,107 @@
+.table-header {
+    background-color: #bfdbfe;
+    color: #1e3a8a;
+}
+
+.body-data {
+    height: 3.5rem;
+}
+
+.body-data:hover {
+    background-color: rgb(241, 245, 255);
+}
+
+.doc-link {
+    color: black;
+    cursor: pointer;
+}
+
+.doc-link:hover {
+    color: #2542ea;
+}
+
+.sts-btn {
+    background-color: #22c55e;
+    font-weight: 600;
+    cursor: pointer;
+    /* border: none;
+    border-radius: .4rem;
+    padding-block: .4rem; */
+}
+
+.sts-btn:hover {
+    background-color: #1da34e;
+}
+
+.status-card {
+    width: 30rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    position: absolute;
+    font-size: .85rem;
+    top: 15rem;
+    z-index: 99;
+}
+
+.card-header h5 {
+    color: #1a4cc6;
+    margin: 0 0 1rem;
+}
+
+.app-id {
+    color: #1a4bc6d4;
+    font-size: .75rem;
+}
+
+.close-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: #555;
+    font-size: 1.5rem;
+}
+
+.close-icon:hover {
+    color: rgba(255, 0, 0, 0.658);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: .5rem .25rem;
+}
+
+thead {
+    background-color: #f0f1f5;
+    font-weight: 600;
+}
+
+.text-green {
+    color: green;
+}
+
+.text-yellow {
+    color: goldenrod;
+}
+
+.text-muted {
+    color: #999;
+}
+
+.overlay {
+    /* display: none; */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 98;
+}

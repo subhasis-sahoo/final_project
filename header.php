@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./style/common.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/dashboard.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/registration_card.css?v=<?php echo time(); ?>">
-    <!-- <link rel="stylesheet" href="./style/new_application.css?v=<?php echo time(); ?>"> -->
+    <link rel="stylesheet" href="./style/application_history.css?v=<?php echo time(); ?>">
 
     <style>
         * {

@@ -11,7 +11,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
 <div class="container-fluid mt-3 mx-0 px-4 main-container">
     <!-- Page Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
-        <h2 class="mb-3">New Application</h2>
+        <h3 class="mb-3">New Application</h3>
         <div class="btn-toolbar mb-2 mb-md-0">
             <a href="dashboard.php" class="btn btn-sm btn-outline-secondary">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
@@ -27,11 +27,6 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
                 <li class="nav-item bg-light border border-light-1 border-bottom-0 rounded-top-2">
                     <a class="nav-link border-0 rounded-top-2 nav-items exam-form <?php $page == 'new_application.php' ? print "bg-primary text-white" : print "bg-light text-secondary" ?>" id="examForm" href="new_application.php">
                         <i class="fas fa-plus"></i> New Application
-                    </a>
-                </li>
-                <li class="nav-item bg-light border border-light-1 border-bottom-0 rounded-top-2">
-                    <a class="nav-link border-0 rounded-top-2 nav-items exam-term <?php $page == 'application_status.php' ? print "bg-primary text-white" : print "bg-light text-secondary" ?>" id="examTerm" href="application_status.php">
-                        <i class="fas fa-search"></i> Application Status
                     </a>
                 </li>
                 <li class="nav-item bg-light border border-light-1 border-bottom-0 rounded-top-2">

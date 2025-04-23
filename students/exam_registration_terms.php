@@ -11,7 +11,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
 <div class="container-fluid mt-3 mx-0 px-4 main-container">
     <!-- Page Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
-        <h2 class="mb-3">Terms & Conditions</h2>
+        <h3 class="mb-3">Terms & Conditions</h3>
         <div class="btn-toolbar mb-2 mb-md-0">
             <a href="dashboard.php" class="btn btn-sm btn-outline-secondary">
                 <i class="fas fa-arrow-left"></i> Back to Dashboard

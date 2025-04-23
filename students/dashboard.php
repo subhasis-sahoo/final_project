@@ -41,8 +41,8 @@ $dashboardCards = [
         ],
         'actions' => [
             ['text' => 'New Application', 'icon' => 'fa-plus', 'link' => 'new_application.php'],
-            ['text' => 'Track Status', 'icon' => 'fa-search', 'link' => 'track-application.php'],
-            ['text' => 'History', 'icon' => 'fa-history', 'link' => 'application_history.php']
+            // ['text' => 'Track Status', 'icon' => 'fa-search', 'link' => 'track-application.php'],
+            ['text' => 'Application History', 'icon' => 'fa-history', 'link' => 'application_history.php']
         ]
     ],
     [
@@ -218,7 +218,7 @@ function renderDashboardCards($card) {
 <!-- Dashboard Grid -->
 <div class="container-fluid mt-3 mx-0 px-4 dashboard-container main-container">
     <div class="mb-3 border-bottom">
-        <h2 class="mb-3">Dashboard</h2>
+        <h3 class="mb-3">Dashboard</h3>
     </div>
     <div class="row mx-0 d-felx flex-wrap justify-content-between">
         <div class="col-md-6 col-lg-4 col-xl-4 mb-4 card p-0 dashboard-card">
