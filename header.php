@@ -1,5 +1,6 @@
 <?php
-    session_start();
+session_start();
+$_SESSION['sic'] = "25MMCI24";
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../header.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../sidebar.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../loader.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/common.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/dashboard.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/registration_card.css?v=<?php echo time(); ?>">
@@ -39,7 +41,7 @@
     <header>
         <!-- Top Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid">
+            <div class="container-fluid position-relative">
                 <!-- University Logo and Name -->
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand" href="https://silicon.ac.in" target="_blank">
@@ -50,6 +52,12 @@
                 <!-- Unit/Department Banner -->
                 <div class="unit-banner">
                     <h1>SiliconTech is a Unit of Silicon University</h1>
+                </div>
+
+                <!-- Loading indicator (initially hidden) -->
+                <div id="mainLoadingIndicator" class="position-absolute start-50 top-100 d-flex gap-3 my-4 d-none">
+                    <div class="loader"></div>
+                    <p class="text-dark fw-medium" style="letter-spacing: .05cm;">Loading...</p>
                 </div>
 
                 <!-- User Information and Actions -->

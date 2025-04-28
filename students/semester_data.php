@@ -46,3 +46,4 @@ if ($student_semester['semester'] != $searched_semester) {
 }
 
 echo json_encode($response);
+?>

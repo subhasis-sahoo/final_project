@@ -167,7 +167,7 @@ $dashboardCards = [
 
 function renderDashboardCards($card) {
     $iconBgColor = isset($card['color']) ? $card['color'] : 'primary';
-    $iconClass = isset($card['icon']) ? $card['icon'] : 'fa-info-circle';
+    // $iconClass = isset($card['icon']) ? $card['icon'] : 'fa-info-circle';
     ?>
     <div class="col-md-6 col-lg-4 col-xl-4 mb-4 card p-0 dashboard-card">
         <div class="card-header" style="background-color: <?php echo $iconBgColor ?>;">
@@ -320,11 +320,15 @@ function renderDashboardCards($card) {
             </div>
             <div class="card-footer bg-light">
                 <div class="d-flex justify-content-around">
-                    <a href="#" class="d-flex align-item-center gap-1 card-action-link">
-                        <i class="fas fa-credit-card my-auto"></i>
+                    <a href="my_dues.php" class="d-flex align-item-center gap-1 card-action-link">
+                    <i class="fa-solid fa-money-bill-wave my-auto"></i>
                         <p class="m-0 p-0">Pay Online</p>
                     </a>
-                    <a href="#" class="d-flex align-item-center gap-1 card-action-link">
+                    <a href="account_details.php" class="d-flex align-item-center gap-1 card-action-link">
+                        <i class="fas fa-credit-card my-auto"></i>
+                        <p class="m-0 p-0">Account Details</p>
+                    </a>
+                    <a href="transactions_details.php" class="d-flex align-item-center gap-1 card-action-link">
                         <i class="fas fa-print my-auto"></i>
                         <p class="m-0 p-0">Print Receipt</p>
                     </a>

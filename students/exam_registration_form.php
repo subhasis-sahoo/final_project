@@ -1,7 +1,6 @@
 <?php
 // Include header file which contains the main structure
 include_once '../header.php';
-$_SESSION['sic'] = "25MMCI27";
 
 $sic = $_SESSION['sic'];
 require_once "functions.php";
@@ -44,7 +43,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/")+1)
         </div>
 
         <!-- Card Body -->
-        <div class="card-body px-4 border rounded-bottom-2 shadow-sm">
+        <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
             <!-- Semester Search Bar -->
             <form id="searchBarForm" class="form-group mb-3" action="subject_data.php" method="post">
                 <label for="semesterSearch" class="fw-semibold mb-1"><i class="fas fa-search"></i> Search Your Semester</label>
@@ -58,9 +57,10 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/")+1)
 
             <!-- Loading indicator (initially hidden) -->
             <div id="loadingIndicator" class="text-center my-4 d-none">
-                <div class="spinner-border text-primary" role="status">
+                <!-- <div class="spinner-border text-primary" role="status">
                     <span class="sr-only">Loading...</span>
-                </div>
+                </div> -->
+                <div class="loader"></div>
                 <p class="mt-2">Loading subjects...</p>
             </div>
 
@@ -76,7 +76,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/")+1)
             </div>
 
             <!-- Button to view registration form if student is already registered -->
-            <div id="viewNowBtn" class="mt-2 <?php $is_registered == 1 ? print "" : print "d-none" ?> ">
+            <div id="viewNowBtn" class="<?php $is_registered == 1 ? print "" : print "d-none" ?> ">
                 <a href="./registration_card.php" class="btn btn-success" >View Now</a>
             </div>
 
@@ -84,7 +84,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/")+1)
             <form id="registrationForm" class="d-none my-1" action="" method="post">
                 <!-- Subject selection table for exam registration -->
                 <div class="table-responsive form-group">
-                    <table class="table table-hover table-bordered border-secondary rounded-3">
+                    <table class="table table-hover table-bordered border-secondary rounded-3 mb-2">
                         <thead class="thead-light bg-warning text-dark">
                             <tr>
                                 <th class="text-center">SL</th>
@@ -103,12 +103,12 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/")+1)
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="declaration" required>
                         <label class="custom-control-label fw-medium" for="declaration" style="font-size: .9rem;">
-                            I hereby declare that all the information provided is correct and I agree to the <a href="#" class="text-decoration-none fw-medium">terms and conditions</a>
+                            I hereby declare that all the information provided is correct and I agree to the <a href="exam_registration_terms.php" class="text-decoration-none fw-medium">terms and conditions</a>
                         </label>
                     </div>
                 </div>
 
-                <div class="form-group mt-2 d-flex gap-2">
+                <div class="form-group mt-3 d-flex gap-2">
                     <input type="submit" value="Register" id="registerButton" class="btn btn-success px-3" disabled></input>
                     <a href="index.php" class="btn btn-secondary px-3">Cancel</a>
                 </div>

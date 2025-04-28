@@ -39,8 +39,8 @@ $date = date("d/m/y");
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h3 class="mb-3">Registration Card</h3>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <a href="dashboard.php" class="btn btn-sm btn-outline-secondary">
-                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            <a href="exam_registration_form.php" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Previous Page
             </a>
         </div>
     </div>

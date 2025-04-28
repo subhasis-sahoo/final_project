@@ -162,4 +162,24 @@
             $conn->close();
         }
     }
+
+    // Returns student's accounts details form student_dues table
+    function getStudentAccountsDetails($sic) {
+        $conn = getConnection();
+
+        try {
+            $qry = "SELECT account_details FROM student_dues WHERE student_sic=?";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("s", $sic);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result;
+            
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
 ?>

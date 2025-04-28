@@ -53,9 +53,9 @@ for ($i = 1; $i <= 15; $i++) {
         </div>
 
         <!-- Card Body -->
-        <div class="card-body px-4 border rounded-bottom-2 shadow-sm">
+        <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
             <!-- Applications history -->
-            <div class="d-flex flex-column mt-1">
+            <div class="d-flex flex-column">
                 <!-- Application history page header -->
                 <div class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom rounded-top-2 table-header">
                     <h6 class="col-md-2 fw-bold my-1">Application ID</h6>

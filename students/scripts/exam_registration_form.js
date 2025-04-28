@@ -82,7 +82,7 @@ searchBarForm.addEventListener('submit', function (e) {
             noSubjectsFound.classList.remove('d-none');
         }
 
-    }, 1000)
+    }, 1500)
 
 });
 

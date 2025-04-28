@@ -38,7 +38,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
         </div>
 
         <!-- Card Body -->
-        <div class="card-body px-4 border rounded-bottom-2 shadow-sm">
+        <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
             <!-- Application form for students -->
             <form class="row" action="process_registration.php" method="POST" enctype="multipart/form-data">
                 <div class="col-6 mb-4">
@@ -80,7 +80,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
                     <div class="form-text">Please upload supporting documents in PDF format only.</div>
                 </div>
                 
-                <div class="d-grid gap-3 d-md-flex justify-content-md-start">
+                <div class="d-flex gap-3 d-md-flex justify-content-start">
                     <input type="submit" id="" class="btn btn-warning px-4 py-2">
                     <input type="reset" id="" class="btn btn-outline-secondary px-4 py-2">
                 </div>
