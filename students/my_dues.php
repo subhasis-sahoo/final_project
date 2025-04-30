@@ -1,6 +1,7 @@
 <?php
 // Include header file which contains the main structure
 include_once '../header.php';
+include_once "./sidebar.php";
 
 
 $sic = $_SESSION['sic'];

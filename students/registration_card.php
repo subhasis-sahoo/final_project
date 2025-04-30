@@ -1,7 +1,9 @@
 <?php
 include_once "../header.php";
-require_once "functions.php";
+include_once "./sidebar.php";
 
+
+require_once "functions.php";
 
 $sic = $_SESSION['sic'];
 

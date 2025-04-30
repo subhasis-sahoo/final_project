@@ -51,3 +51,4 @@ $navItems = [
 </div>
 
 <!-- <script src="./scripts/sidebar.js"></script> -->
+<script src="./scripts/sidebar.js?v=<?php echo time(); ?>"></script>

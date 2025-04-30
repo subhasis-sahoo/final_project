@@ -16,8 +16,8 @@ $_SESSION['sic'] = "25MMCI24";
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../header.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../sidebar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../loader.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./style/sidebar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/common.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/dashboard.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="./style/registration_card.css?v=<?php echo time(); ?>">
@@ -78,20 +78,40 @@ $_SESSION['sic'] = "25MMCI24";
                     </div>
 
                     <!-- User Profile -->
-                    <div class="d-flex justify-content-center align-item-center gap-2 user-profile dropdown">
-                        <img src="../public/assets/Subhasis_Sahoo-Photo.jpg" alt="user_image" height="36px" class="user_image">
-                        <div class="my-auto fs-6 text-white user_name">Subhasis Sahoo</div>
-                        <div class="my-auto fs-6 text-white user_roll">(Student)</div>
+                    <div class="user-profile dropdown">
+                        <a class="dropdown-toggle text-light text-decoration-none d-flex align-items-center gap-2" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../public/assets/Subhasis_Sahoo-Photo.jpg" alt="user_image" height="36px" class="user_image">
+                            <div class="my-auto fs-6 text-white user_name">Subhasis Sahoo</div>
+                            <div class="my-auto fs-6 text-white user_roll">(Student)</div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item d-flex justify-content-center align-items-center gap-3 p-1" href="">
+                                    <img src="../public/assets/Subhasis_Sahoo-Photo.jpg" alt="" width="50">
+                                    <div>
+                                        <div>Subhasis Sahoo (Student)</div>
+                                        <div>23MMCI50</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item p-1" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
     <?php
-    include_once "sidebar.php";
+    // include_once "sidebar.php";
     // include_once "dashboard.php";
     ?>
-    <script src="../sidebar.js?v=<?php echo time(); ?>"></script>
+    <!-- <script src="../sidebar.js?v=<?php // echo time(); ?>"></script> -->
+
+    // Bootstrap CDN for JavaScript
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 
 </html>

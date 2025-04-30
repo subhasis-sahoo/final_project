@@ -1,6 +1,7 @@
 <?php
 // Include header file which contains the main structure
 include_once '../header.php';
+include_once "./sidebar.php";
 
 // $_SERVER['SCRIPT_NAME'] gives the whole url
 // strrpos($_SERVER['SCRIPT_NAME'], "/") Finding first occourane of '/' from the reverse of the url.

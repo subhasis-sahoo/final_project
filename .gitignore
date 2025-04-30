@@ -3,3 +3,5 @@ test/
 
 # Database connection file
 dbconnect.php
+
+.env

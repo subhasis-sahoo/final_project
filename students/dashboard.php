@@ -1,10 +1,51 @@
 <?php
 // Including header.php
 include_once "../header.php";
+include_once "./sidebar.php";
 
 
-// Sample data for cards - In a real application, this would come from a database
-$dashboardCards = [
+// Actual functional cards tailered with data that comes from database
+$realCards = [
+    [
+        'title' => 'Faculty Advisor', 
+        'color' => 'coral', 
+        'icon' => 'fa-user-tie',
+        'content' => [
+            'Name' => 'DR Mukti Routray',
+            'Contact Number' => '9861184312'
+        ],
+        'actions' => [
+            ['text' => 'Interactions', 'icon' => 'fa-comments', 'link' => '#'],
+            ['text' => 'Raise an Issue', 'icon' => 'fa-exclamation-circle', 'link' => '#'],
+            ['text' => 'SOP', 'icon' => 'fa-file-alt', 'link' => '#']
+        ]
+    ],
+    [
+        'title' => 'Attendance', 
+        'color' => 'purple', 
+        'icon' => 'fa-clipboard-check',
+        'content' => [
+            'Subjects' => '0',
+            '0 to 79%' => '-',
+            '80% to 100%' => '9'
+        ],
+        'actions' => [
+            ['text' => 'More Info', 'icon' => 'fa-info-circle', 'link' => '#']
+        ]
+    ],
+    [
+        'title' => 'Dues', 
+        'color' => 'seagreen', 
+        'icon' => 'fa-money-bill-wave',
+        'content' => [
+            'Total Dues' => '3450'
+        ],
+        'actions' => [
+            ['text' => 'Pay Online', 'icon' => 'fa-money-bill-wave', 'link' => 'my_dues.php'],
+            ['text' => 'Account Details', 'icon' => 'fa-credit-card', 'link' => 'account_details.php'],
+            ['text' => 'Print Receipt', 'icon' => 'fa-print', 'link' => 'transactions_details.php']
+        ]
+    ],
     [
         'title' => 'Exam Registration', 
         'color' => 'green', 
@@ -44,7 +85,11 @@ $dashboardCards = [
             // ['text' => 'Track Status', 'icon' => 'fa-search', 'link' => 'track-application.php'],
             ['text' => 'Application History', 'icon' => 'fa-history', 'link' => 'application_history.php']
         ]
-    ],
+    ]
+];
+
+// Sample data for cards - In a real application, this would come from a database
+$demoCards = [
     [
         'title' => 'Academics',
         'color' => 'dodgerblue',
@@ -165,6 +210,7 @@ $dashboardCards = [
 ];
 
 
+// Function to render cards
 function renderDashboardCards($card) {
     $iconBgColor = isset($card['color']) ? $card['color'] : 'primary';
     // $iconClass = isset($card['icon']) ? $card['icon'] : 'fa-info-circle';
@@ -221,124 +267,14 @@ function renderDashboardCards($card) {
         <h3 class="mb-3">Dashboard</h3>
     </div>
     <div class="row mx-0 d-felx flex-wrap justify-content-between">
-        <div class="col-md-6 col-lg-4 col-xl-4 mb-4 card p-0 dashboard-card">
-            <div class="card-header" style="background-color: coral;">
-                <h5 class="text-white">Faculty Advisor</h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8 contents">
-                        <div class="d-flex align-item-center gap-2 content">
-                            <h6>Name:</h6>
-                            <span>DR Mukti Routray</span>
-                        </div>
-                        <div class="d-flex align-item-center gap-2 content">
-                            <h6>Contact Number:</h6>
-                            <span>9861184312</span>
-                        </div>
-                    </div>
-                    <div class="col-4 text-center">
-                        <div class="card-icon-container" style="background-color: coral;">
-                            <i class="fas fa-user-tie fa-2x text-white"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer bg-light">
-                <div class="d-flex justify-content-around">
-                    <a href="#" class="d-flex align-item-center gap-1 card-action-link">
-                        <i class="fas fa-comments my-auto"></i>
-                        <p class="m-0 p-0">Interactions</p>
-                    </a>
-                    <a href="#" class="d-flex align-item-center gap-1 card-action-link">
-                        <i class="fas fa-exclamation-circle my-auto"></i>
-                        <p class="m-0 p-0">Raise an Issue</p>
-                    </a>
-                    <a href="#" class="d-flex align-item-center gap-1 card-action-link">
-                        <i class="fas fa-file-alt my-auto"></i>
-                        <p class="m-0 p-0">SOP</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 col-xl-4 mb-4 card p-0 dashboard-card">
-            <div class="card-header" style="background-color: purple;">
-                <h5 class="text-white">Attendance</h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8 contents">
-                        <div class="d-flex align-item-center gap-2 content">
-                            <h6>Subjects:</h6>
-                            <span>0</span>
-                        </div>
-                        <div class="d-flex align-item-center gap-2 content">
-                            <h6>0 to 79%:</h6>
-                            <span>-</span>
-                        </div>
-                        <div class="d-flex align-item-center gap-2 content">
-                            <h6>80% to 100%:</h6>
-                            <span>9</span>
-                        </div>
-                    </div>
-                    <div class="col-4 text-center">
-                        <div class="card-icon-container" style="background-color: purple;">
-                            <i class="fas fa-clipboard-check fa-2x text-white"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer bg-light">
-                <div class="d-flex justify-content-around">
-                    <a href="#" class="d-flex align-item-center gap-1 card-action-link">
-                        <i class="fas fa-info-circle my-auto"></i>
-                        <p class="m-0 p-0">More Info</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4 col-xl-4 mb-4 card p-0 dashboard-card">
-            <div class="card-header" style="background-color: seagreen;">
-                <h5 class="text-white">Dues</h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-8 contents">
-                        <div class="d-flex align-item-center gap-2 content">
-                            <h6>Total Dues:</h6>
-                            <span>3450</span>
-                        </div>
-                    </div>
-                    <div class="col-4 text-center">
-                        <div class="card-icon-container" style="background-color: seagreen;">
-                            <i class="fas fa-money-bill-wave fa-2x text-white"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer bg-light">
-                <div class="d-flex justify-content-around">
-                    <a href="my_dues.php" class="d-flex align-item-center gap-1 card-action-link">
-                    <i class="fa-solid fa-money-bill-wave my-auto"></i>
-                        <p class="m-0 p-0">Pay Online</p>
-                    </a>
-                    <a href="account_details.php" class="d-flex align-item-center gap-1 card-action-link">
-                        <i class="fas fa-credit-card my-auto"></i>
-                        <p class="m-0 p-0">Account Details</p>
-                    </a>
-                    <a href="transactions_details.php" class="d-flex align-item-center gap-1 card-action-link">
-                        <i class="fas fa-print my-auto"></i>
-                        <p class="m-0 p-0">Print Receipt</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <?php
-        // Render each card in the grid
-        foreach ($dashboardCards as $card) {
+        // Render each real cards in the grid
+        foreach ($realCards as $card) {
+            renderDashboardCards($card);
+        }
+
+        // Render each demo cards in the grid
+        foreach ($demoCards as $card) {
             renderDashboardCards($card);
         }
         ?>
