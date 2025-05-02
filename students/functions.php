@@ -1,6 +1,27 @@
 <?php
     require_once "../dbconnect.php";
 
+    // Retruns a studnet's faculty advisor name using their sic
+    function getFAName($sic){
+        $conn = getConnection();
+        // print_r($conn);
+
+        try {
+            $qry = "SELECT u.full_name AS faculty_name FROM students s JOIN faculty_advisors AS fa ON s.sic = fa.student_sic JOIN users AS u ON fa.user_sic = u.u_sic WHERE s.sic=?";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("s", $sic);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            return $result;
+
+        } catch(Exception $e) {
+            $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
     // Return student's semester from the students table
     function getSemester($sic) {
         $conn = getConnection();
@@ -20,7 +41,6 @@
         } finally {
             $conn->close();
         }
-
     }
 
     // Return all the subjects list from the subjects table according to the semester

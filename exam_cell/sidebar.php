@@ -4,20 +4,20 @@
 // Navigation items - In a real application, these might come from a database
 // Format: [label, icon, link]
 $navItems = [
-    ['Hostel', 'fa-building', 'hostel.php'],
-    ['Activity', 'fa-chart-line', 'activity.php'],
-    ['Academics', 'fa-graduation-cap', 'academics.php'],
-    ['Planning', 'fa-calendar-alt', 'planning.php'],
-    ['Activity', 'fa-tasks', 'daily-activity.php'],
-    ['DMS', 'fa-folder', 'document-management.php'],
-    ['Inbox', 'fa-envelope', 'inbox.php'],
-    ['Library', 'fa-book', 'library.php'],
-    ['Report', 'fa-file-alt', 'report.php'],
-    ['Canteen', 'fa-utensils', 'canteen.php'],
-    ['Repository', 'fa-archive', 'repository.php'],
-    ['Student Handbook', 'fa-book-open', 'handbook.php'],
-    ['Anti Ragging', 'fa-shield-alt', 'anti-ragging.php'],
-    ['Activity', 'fa-clipboard-list', 'activity-tracker.php']
+    ['Dashboard', 'fa-tachometer-alt', 'dashboard.php'],
+    ['Exam Registration', 'fa-edit', 'exam-registration.php'],
+    ['Admit Card', 'fa-id-card', 'admit-card.php'],
+    ['Exam Schedule', 'fa-calendar-alt', 'exam-schedule.php'],
+    ['Results', 'fa-poll', 'results.php'],
+    ['Student Applications', 'fa-folder-open', 'applications.php'],
+    ['Attendance & Dues', 'fa-user-check', 'attendance-dues.php'],
+    ['Notifications', 'fa-bell', 'notifications.php'],
+    ['Student Queries', 'fa-question-circle', 'student-queries.php'],
+    ['Exam Reports', 'fa-chart-bar', 'exam-reports.php'],
+    ['Revaluation Requests', 'fa-sync-alt', 'revaluation.php'],
+    ['Exam Guidelines', 'fa-book', 'exam-guidelines.php'],
+    ['Circulars', 'fa-bullhorn', 'circulars.php'],
+    ['Support', 'fa-life-ring', 'support.php']
 ];
 ?>
 
@@ -26,7 +26,7 @@ $navItems = [
     <div class="sidebar" id="sidebar">
         <!-- Siebar header with toggle button -->
         <div class="d-flex justify-content-between align-item-center sidebar-header">
-            <span class="sidebar-title">Student Portal</span>
+            <span class="sidebar-title">Exam Cell Portal</span>
             <button class="btn sidebar-toggle" id="sidebarToggle">
                 <i class="fas fa-bars"></i>
             </button>

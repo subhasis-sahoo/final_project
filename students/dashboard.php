@@ -3,6 +3,22 @@
 include_once "../header.php";
 include_once "./sidebar.php";
 
+require_once "functions.php";
+
+$sic = $_SESSION['sic'];
+
+// Function to get studnet's faculty advisor name using their sic
+$facultlyName = getFAName($sic)->fetch_assoc()['faculty_name'];
+// print_r($facultlyName);
+
+
+// Function to get studnet's dues using their sic
+$studentDues = getStudentDue($sic)->fetch_assoc()['amount'];
+
+// Function to get exam registration last date
+$examRegistrationLastDate = trim(getExamRegistrationLastDate()->fetch_assoc()['COLUMN_DEFAULT'], "'");
+$examRegistrationLastDate = date('j F, Y', strtotime($examRegistrationLastDate)); 
+
 
 // Actual functional cards tailered with data that comes from database
 $realCards = [
@@ -11,7 +27,7 @@ $realCards = [
         'color' => 'coral', 
         'icon' => 'fa-user-tie',
         'content' => [
-            'Name' => 'DR Mukti Routray',
+            'Name' => $facultlyName,
             'Contact Number' => '9861184312'
         ],
         'actions' => [
@@ -38,7 +54,7 @@ $realCards = [
         'color' => 'seagreen', 
         'icon' => 'fa-money-bill-wave',
         'content' => [
-            'Total Dues' => '3450'
+            'Total Dues' => $studentDues
         ],
         'actions' => [
             ['text' => 'Pay Online', 'icon' => 'fa-money-bill-wave', 'link' => 'my_dues.php'],
@@ -52,7 +68,7 @@ $realCards = [
         'icon' => 'fa-pen-to-square',
         'content' => [
             'Status' => 'Open',
-            'Deadline' => 'March 25, 2025'
+            'Deadline' => $examRegistrationLastDate
         ],
         'actions' => [
             ['text' => 'Register Now', 'icon' => 'fa-check-circle', 'link' => 'exam_registration_form.php'],
@@ -262,7 +278,7 @@ function renderDashboardCards($card) {
 
 
 <!-- Dashboard Grid -->
-<div class="container-fluid mt-3 mx-0 px-4 dashboard-container main-container">
+<div class="container-fluid mt-0 mx-0 px-4 dashboard-container main-container">
     <div class="mb-3 border-bottom">
         <h3 class="mb-3">Dashboard</h3>
     </div>
@@ -282,4 +298,4 @@ function renderDashboardCards($card) {
 </div>
 
 
-<script src="./scripts/dashboard.js?v=<?php echo time(); ?>"></script>
+<script src="../utilities/scripts/dashboard.js?v=<?php echo time(); ?>"></script>

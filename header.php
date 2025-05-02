@@ -15,13 +15,13 @@ $_SESSION['sic'] = "25MMCI24";
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../header.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../loader.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./style/sidebar.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./style/common.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./style/dashboard.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./style/registration_card.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./style/application_history.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../utilities/styles/header.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../utilities/styles/loader.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../utilities/styles/sidebar.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../utilities/styles/common.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../utilities/styles/dashboard.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./styles/registration_card.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./styles/application_history.css?v=<?php echo time(); ?>">
 
     <style>
         * {

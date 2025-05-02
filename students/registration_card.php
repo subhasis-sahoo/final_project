@@ -36,7 +36,7 @@ $date = date("d/m/y");
 
 ?>
 
-<div class="container-fluid mt-3 mx-0 px-4 main-container">
+<div class="container-fluid mt-0 mx-0 px-4 main-container">
     <!-- Page Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h3 class="mb-3">Registration Card</h3>
@@ -148,26 +148,18 @@ $date = date("d/m/y");
             </div>
 
             <!-- Footer Section -->
-            <div class="d-flex flex-column mt-auto mx-1">
-                <div class="footer-item d-flex justify-content-between mb-5 fw-medium" style="font-size: 0.9rem;">
-                    <div class="position-relative d-flex justify-content-center pt-2" id="date">
-                        <div>Date: ..................................</div>
-                        <span class="position-absolute text-secondary" style="margin-top: -5px;"><?php echo $date ?></span>
-                    </div>
-                    <div class="position-relative d-flex justify-content-center gap-3 pt-2" id="requestedBy">
-                        <div>Requested by the student</div>
-                        <span class="position-absolute text-secondary" style="margin-top: -20px;"><?php echo $studentDetailes['full_name'] ?></span>
-                    </div>
+            <div class="footer-item d-flex justify-content-between mb-2 fw-medium mt-auto" style="font-size: 0.9rem;">
+                <div class="position-relative d-flex justify-content-center pt-2" id="date">
+                    <div>Date: ..................................</div>
+                    <span class="position-absolute text-secondary" style="margin-top: -5px;"><?php echo $date ?></span>
                 </div>
-                <div class="footer-item d-flex justify-content-between mt-5 mb-2 fw-medium" style="font-size: 0.9rem;">
-                    <div class="position-relative d-flex justify-content-center pt-2" id="requestedBy">
-                        <div>Signature of the HOD (Adminstration)</div>
-                        <span class="position-absolute text-secondary d-none" style="margin-top: -20px;"><?php echo $studentDetailes['full_name'] ?></span>
-                    </div>
-                    <div class="position-relative d-flex justify-content-center pt-2" id="requestedBy">
-                        <div>Signature of the Faculty Advisor</div>
-                        <span class="position-absolute text-secondary d-none" style="margin-top: -20px;"><?php echo $studentDetailes['full_name'] ?></span>
-                    </div>
+                <div class="position-relative d-flex justify-content-center gap-3 pt-2" id="requestedBy">
+                    <div>Name of the Student</div>
+                    <span class="position-absolute text-secondary" style="margin-top: -20px;"><?php echo $studentDetailes['full_name'] ?></span>
+                </div>
+                <div class="position-relative d-flex justify-content-center pt-2" id="requestedBy">
+                    <div>HOD (Adminstration)</div>
+                    <span class="position-absolute text-secondary d-none" style="margin-top: -20px;"><?php echo $studentDetailes['full_name'] ?></span>
                 </div>
             </div>
 
@@ -181,7 +173,7 @@ $date = date("d/m/y");
 </div>
 
 <!-- Script to manage sidebar toggle -->
-<script src="./scripts/dashboard.js?v=<?php echo time(); ?>"></script>
+<script src="../utilities/scripts/dashboard.js?v=<?php echo time(); ?>"></script>
 
 <!-- Script for registration card page -->
 <script src="./scripts/registration_card.js?v=<?php echo time(); ?>"></script>

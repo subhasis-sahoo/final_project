@@ -24,7 +24,7 @@ for ($i = 1; $i <= 15; $i++) {
 ?>
 
 <!-- Main Content -->
-<div class="container-fluid mt-3 mx-0 px-4 main-container">
+<div class="container-fluid mt-0 mx-0 px-4 main-container">
     <!-- Page Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h3 class="mb-3">Application History</h3>
@@ -139,6 +139,6 @@ for ($i = 1; $i <= 15; $i++) {
 </div>
 
 <!-- Script to manage sidebar toggle -->
-<script src="./scripts/dashboard.js?v=<?php echo time(); ?>"></script>
+<script src="../utilities/scripts/dashboard.js?v=<?php echo time(); ?>"></script>
 
 <script src="./scripts/application_history.js?v=<?php echo time(); ?>"></script>
