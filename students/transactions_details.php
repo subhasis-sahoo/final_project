@@ -44,7 +44,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
         </div>
 
         <!-- Card Body -->
-        <div class="card-body px-4 border rounded-bottom-2 shadow-sm">
+        <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
 
         </div>
     </div>

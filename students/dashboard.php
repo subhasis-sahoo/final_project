@@ -170,9 +170,9 @@ $demoCards = [
         'color' => 'mediumseagreen',
         'icon' => 'fa-id-card',
         'content' => [
-            'Name' => 'SUBHASIS SAHOO',
+            'Name' => 'Subhasis Sahoo',
             'Mobile No.' => '8249867525',
-            'Email Id' => 'subhasissahoo949@gmail.com'
+            'Email' => 'subhasissahoo949@gmail.com'
         ],
         'actions' => [
             ['text' => 'More Info', 'icon' => 'fa-info-circle', 'link' => 'profile-info.php']
