@@ -30,13 +30,17 @@ $semester = [1 => "1st", 2 => "2nd", 3 => "3rd", 4 => "4th"];
 $registeredData = json_decode(getRegistrationData($sic)->fetch_assoc()['registration_data']);
 // echo $registeredData->subject_list[0]->subject_name;
 
-// Getting current date
-date_default_timezone_set("asia/kolkata");
-$date = date("d/m/y");
+// Getting apply date
+// date_default_timezone_set("asia/kolkata");
+// $date = date("d/m/y");
+$apply_date = getRegistrationCardApplyDate($sic)->fetch_assoc()['apply_date'];
+// print_r($apply_date);
+$timestamp = strtotime($apply_date); // Convert string to timestamp
+$formatted_apply_date = date('d/m/Y', $timestamp);
 
 ?>
 
-<div class="container-fluid mt-0 mx-0 px-4 main-container">
+<div class="container-fluid mt-3 mx-0 px-4 main-container">
     <!-- Page Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h3 class="mb-3">Registration Card</h3>
@@ -151,7 +155,7 @@ $date = date("d/m/y");
             <div class="footer-item d-flex justify-content-between mb-2 fw-medium mt-auto" style="font-size: 0.9rem;">
                 <div class="position-relative d-flex justify-content-center pt-2" id="date">
                     <div>Date: ..................................</div>
-                    <span class="position-absolute text-secondary" style="margin-top: -5px;"><?php echo $date ?></span>
+                    <span class="position-absolute text-secondary" style="margin-top: -5px;"><?php echo $formatted_apply_date ?></span>
                 </div>
                 <div class="position-relative d-flex justify-content-center gap-3 pt-2" id="requestedBy">
                     <div>Name of the Student</div>

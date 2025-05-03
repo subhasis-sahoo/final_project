@@ -16,6 +16,9 @@
 
     // Check if the student is already registerd
     $is_registred = isStudnetRegistered($sic);
+
+    // Get today's date in 23 Jan, 2025 formate
+    $applyDate = date('d M, Y');
     
     if($is_registred) {
         $response = [
@@ -25,7 +28,7 @@
         ];
     } else {
         // add examRegistration data into exam_registration table
-        $res = addExamRegistrationData($registrationID, $sic, $examRegistrationData);
+        $res = addExamRegistrationData($registrationID, $sic, $examRegistrationData, $applyDate);
 
         if($res) {
             $response = [

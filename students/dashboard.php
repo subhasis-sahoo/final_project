@@ -278,7 +278,7 @@ function renderDashboardCards($card) {
 
 
 <!-- Dashboard Grid -->
-<div class="container-fluid mt-0 mx-0 px-4 dashboard-container main-container">
+<div class="container-fluid mt-3 mx-0 px-4 dashboard-container main-container">
     <div class="mb-3 border-bottom">
         <h3 class="mb-3">Dashboard</h3>
     </div>

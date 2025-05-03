@@ -102,6 +102,26 @@
         }
     }
 
+    // Returns student's registred subjects list and dues data from exam_registration table
+    function getRegistrationCardApplyDate($sic) {
+        $conn = getConnection();
+
+        try {
+            $qry = "SELECT apply_date FROM exam_registrations WHERE student_sic=?";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("s", $sic);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result;
+            
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
     // Return due of the student from student_dues table
     function getStudentDue($sic) {
         $conn = getConnection();
@@ -146,13 +166,13 @@
     }
 
     // add examRegistration data into exam_registration table
-    function addExamRegistrationData($registrationID, $sic, $examRegistrationData) {
+    function addExamRegistrationData($registrationID, $sic, $examRegistrationData, $applyDate) {
         $conn = getConnection();
 
         try {
-            $qry = "INSERT INTO exam_registrations(registration_id, student_sic, registration_data) VALUES(?, ?, ?)";
+            $qry = "INSERT INTO exam_registrations(registration_id, student_sic, registration_data, apply_date) VALUES(?, ?, ?, ?)";
             $stmt = $conn->prepare($qry);
-            $stmt->bind_param("sss", $registrationID, $sic, $examRegistrationData);
+            $stmt->bind_param("ssss", $registrationID, $sic, $examRegistrationData, $applyDate);
             $result = $stmt->execute();
 
             return $result;

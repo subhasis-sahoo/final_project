@@ -18,7 +18,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
 ?>
 
 <!-- Main Content -->
-<div class="container-fluid mt-0 mx-0 px-4 main-container">
+<div class="container-fluid mt-3 mx-0 px-4 main-container">
     <!-- Page Header -->
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h3 class="mb-3">Account Details</h3>
