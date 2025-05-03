@@ -1,23 +1,45 @@
 <?php
 
 include_once "../header.php";
-include_once "sidebar.php";
+include_once "./sidebar.php";
 
 // Actual functional cards tailered with data that comes from database
-
-// Sample data for cards - In a real application, this would come from a database
-$demoCards = [
+$realCards = [
     [
-        'title' => 'Exam Applications',
+        'title' => 'Publish Notices',
+        'color' => 'indianred',
+        'icon' => 'fa-bullhorn',
+        'content' => [
+            'Total Notices' => '2'
+        ],
+        'actions' => [
+            ['text' => 'Publish New Notice', 'icon' => 'fa-upload', 'link' => 'new_notice.php'],
+            ['text' => 'All Notices', 'icon' => 'fa-history', 'link' => 'all_notices.php']
+        ]
+    ],
+    [
+        'title' => 'Eligibility Status',
+        'color' => 'goldenrod',
+        'icon' => 'fa-user-check',
+        'content' => [
+            'Low Attendance' => '5',
+            'Unpaid Dues' => '7'
+        ],
+        'actions' => [
+            ['text' => 'View Eligibility Status', 'icon' => 'fa-eye', 'link' => 'eligibility_status.php']
+        ]
+    ],
+    [
+        'title' => 'Exam Registration Management',
         'color' => 'mediumseagreen',
         'icon' => 'fa-clipboard-check',
         'content' => [
-            'Total Received' => '124',
-            'Approved' => '118',
-            'Pending' => '6'
+            'Total Students' => '124',
+            'Eligible Students' => '118'
         ],
         'actions' => [
-            ['text' => 'View Applications', 'icon' => 'fa-eye', 'link' => 'exam-applications.php']
+            ['text' => 'Complete Registration', 'icon' => 'fa-check-circle', 'link' => 'complete_registration.php'],
+            ['text' => 'Schedule Deadline', 'icon' => 'fa-calendar-alt', 'link' => 'schedule_registration.php']
         ]
     ],
     [
@@ -25,13 +47,18 @@ $demoCards = [
         'color' => 'deepskyblue',
         'icon' => 'fa-id-badge',
         'content' => [
-            'Status' => 'Available',
-            'Next Exam Date' => 'April 10, 2025'
+            'Total Students' => '124',
+            'Eligible Students' => '118'
         ],
         'actions' => [
-            ['text' => 'Manage Cards', 'icon' => 'fa-cog', 'link' => 'manage-admit.php']
+            ['text' => 'Manage Distribution', 'icon' => 'fa-cog', 'link' => 'manage_admit.php'],
+            ['text' => 'Schedule Deadline', 'icon' => 'fa-calendar-alt', 'link' => 'schedule_distribution.php']
         ]
-    ],
+    ]
+];
+
+// Sample data for cards - In a real application, this would come from a database
+$demoCards = [
     [
         'title' => 'Exam Schedule',
         'color' => 'royalblue',
@@ -57,49 +84,6 @@ $demoCards = [
         ]
     ],
     [
-        'title' => 'Dues Verification',
-        'color' => 'mediumvioletred',
-        'icon' => 'fa-money-check-alt',
-        'content' => [
-            'Students with Dues' => '42'
-        ],
-        'actions' => [
-            ['text' => 'View Dues List', 'icon' => 'fa-list', 'link' => 'verify-dues.php']
-        ]
-    ],
-    [
-        'title' => 'Eligibility Status',
-        'color' => 'goldenrod',
-        'icon' => 'fa-user-check',
-        'content' => [
-            'Low Attendance' => '17',
-            'Blocked Students' => '4'
-        ],
-        'actions' => [
-            ['text' => 'Manage Eligibility', 'icon' => 'fa-tasks', 'link' => 'manage-eligibility.php']
-        ]
-    ],
-    [
-        'title' => 'Application History',
-        'color' => 'lightseagreen',
-        'icon' => 'fa-history',
-        'content' => [],
-        'actions' => [
-            ['text' => 'View History', 'icon' => 'fa-archive', 'link' => 'application-history.php']
-        ]
-    ],
-    [
-        'title' => 'Publish Notices',
-        'color' => 'indianred',
-        'icon' => 'fa-bullhorn',
-        'content' => [
-            'New Notices' => '2'
-        ],
-        'actions' => [
-            ['text' => 'Publish', 'icon' => 'fa-upload', 'link' => 'publish-notice.php']
-        ]
-    ],
-    [
         'title' => 'Student Queries',
         'color' => 'slateblue',
         'icon' => 'fa-question-circle',
@@ -120,7 +104,32 @@ $demoCards = [
         'actions' => [
             ['text' => 'Download Reports', 'icon' => 'fa-download', 'link' => 'exam-reports.php']
         ]
-    ]
+    ],
+    [
+        'title' => 'Profile',
+        'color' => 'mediumseagreen',
+        'icon' => 'fa-id-card',
+        'content' => [
+            'Name' => 'Subham Sahoo',
+            'Mobile No.' => '8249867525',
+            'Email' => 'uec.12mmue24.silicon.ac.in'  
+        ],
+        'actions' => [
+            ['text' => 'More Info', 'icon' => 'fa-info-circle', 'link' => 'profile-info.php']
+        ]
+    ],
+    [
+        'title' => 'Holidays',
+        'color' => 'mediumturquoise',
+        'icon' => 'fa-umbrella-beach',
+        'content' => [
+            'Leave Year' => '2024-25',
+            'Total Holiday' => '26'
+        ],
+        'actions' => [
+            ['text' => 'View List', 'icon' => 'fa-list', 'link' => 'holiday-list.php']
+        ]
+    ],
 ];
 
 
@@ -184,9 +193,9 @@ function renderDashboardCards($card) {
     <div class="row mx-0 d-felx flex-wrap justify-content-between">
         <?php
         // Render each real cards in the grid
-        // foreach ($realCards as $card) {
-        //     renderDashboardCards($card);
-        // }
+        foreach ($realCards as $card) {
+            renderDashboardCards($card);
+        }
 
         // Render each demo cards in the grid
         foreach ($demoCards as $card) {
