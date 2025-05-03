@@ -146,13 +146,13 @@
     }
 
     // add examRegistration data into exam_registration table
-    function addExamRegistrationData($sic, $examRegistrationData) {
+    function addExamRegistrationData($registrationID, $sic, $examRegistrationData) {
         $conn = getConnection();
 
         try {
-            $qry = "INSERT INTO exam_registrations(student_sic, registration_data) VALUES(?, ?)";
+            $qry = "INSERT INTO exam_registrations(registration_id, student_sic, registration_data) VALUES(?, ?, ?)";
             $stmt = $conn->prepare($qry);
-            $stmt->bind_param("ss", $sic, $examRegistrationData);
+            $stmt->bind_param("sss", $registrationID, $sic, $examRegistrationData);
             $result = $stmt->execute();
 
             return $result;

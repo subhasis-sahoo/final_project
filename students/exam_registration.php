@@ -9,6 +9,10 @@
     $response = [];
 
     require_once "functions.php";
+    require_once "../generate_random_string.php";
+
+    // Function to generate random string for IDs
+    $registrationID = generateSecureRandomString(8);
 
     // Check if the student is already registerd
     $is_registred = isStudnetRegistered($sic);
@@ -21,7 +25,7 @@
         ];
     } else {
         // add examRegistration data into exam_registration table
-        $res = addExamRegistrationData($sic, $examRegistrationData);
+        $res = addExamRegistrationData($registrationID, $sic, $examRegistrationData);
 
         if($res) {
             $response = [
