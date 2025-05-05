@@ -82,32 +82,12 @@
         }
     }
 
-    // Returns student's registred subjects list and dues data from exam_registration table
-    function getRegistrationData($sic) {
+    // Returns student's exam registration all details form exam_registration table
+    function getExamRegistrationDetails($sic) {
         $conn = getConnection();
 
         try {
-            $qry = "SELECT registration_data FROM exam_registrations WHERE student_sic=?";
-            $stmt = $conn->prepare($qry);
-            $stmt->bind_param("s", $sic);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            return $result;
-            
-        } catch(Exception $e) {
-            echo $e->getMessage();
-        } finally {
-            $conn->close();
-        }
-    }
-
-    // Returns student's registred subjects list and dues data from exam_registration table
-    function getRegistrationCardApplyDate($sic) {
-        $conn = getConnection();
-
-        try {
-            $qry = "SELECT apply_date FROM exam_registrations WHERE student_sic=?";
+            $qry = "SELECT * FROM exam_registrations WHERE student_sic=?";
             $stmt = $conn->prepare($qry);
             $stmt->bind_param("s", $sic);
             $stmt->execute();

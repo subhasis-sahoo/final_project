@@ -27,13 +27,11 @@ $studentDetailes = getStudentsDetails($sic)->fetch_assoc();
 $semester = [1 => "1st", 2 => "2nd", 3 => "3rd", 4 => "4th"];
 
 // Get student's registred subject list
-$registeredData = json_decode(getRegistrationData($sic)->fetch_assoc()['registration_data']);
+$registeredData = json_decode(getExamRegistrationDetails($sic)->fetch_assoc()['registration_data']);
 // echo $registeredData->subject_list[0]->subject_name;
 
 // Getting apply date
-// date_default_timezone_set("asia/kolkata");
-// $date = date("d/m/y");
-$apply_date = getRegistrationCardApplyDate($sic)->fetch_assoc()['apply_date'];
+$apply_date = getExamRegistrationDetails($sic)->fetch_assoc()['apply_date'];
 // print_r($apply_date);
 $timestamp = strtotime($apply_date); // Convert string to timestamp
 $formatted_apply_date = date('d/m/Y', $timestamp);
