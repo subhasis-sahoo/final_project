@@ -132,7 +132,7 @@ $formatted_apply_date = date('d/m/Y', $timestamp);
                         foreach ($registeredData->subject_list as $sl => $subject) {
                         ?>
                             <tr>
-                                <td class="fw-medium p-2" style="font-size: .83rem;"><?php echo $sl ?></td>
+                                <td class="fw-medium p-2" style="font-size: .83rem;"><?php echo $sl+1 ?></td>
                                 <td class="fw-medium p-2" style="font-size: .83rem;"><?php echo $subject->subject_name . "(" . $subject->subject_code . ")" ?></td>
                                 <td class="fw-medium p-2 text-center" style="font-size: .83rem;"><?php echo $subject->amount ?></td>
                                 <td class="fw-medium p-2 text-center" style="font-size: .83rem;"><?php echo $subject->registration_last_date ?></td>

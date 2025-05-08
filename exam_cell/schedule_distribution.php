@@ -40,21 +40,22 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
 
         <!-- Card Body -->
         <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
-            <!-- Application form for schedule exam Registration -->
-            <form class="row" action="process_registration.php" method="POST" enctype="multipart/form-data">
+            <!-- Application form for schedule Admit Card Distribution -->
+            <form class="row" id="scheduleDistributionForm" action="schedule_distribution_data.php" method="POST" enctype="multipart/form-data">
                 <div class="col-6 mb-4">
-                    <label for="reason" class="form-label mb-1">Exam Registration Year</label>
-                    <input type="text" class="form-control fs-custom" id="name" name="name" value=<?php echo date("Y") ?> readonly>
+                    <label for="reason" class="form-label mb-1">Admit Card Distribution Year</label>
+                    <input type="text" class="form-control fs-custom" id="year" name="year" value=<?php echo date("Y") ?> readonly>
                 </div>
 
                 <div class="col-6 mb-4">
-                    <label for="to" class="form-label mb-1">Exam Registration Month</label>
+                    <label for="to" class="form-label mb-1">Admit Card Distribution Month</label>
                     <select class="form-select fs-custom" id="month" name="month" required>
-                        <option value="february" selected disabled>Select Month</option>
-                        <option value="february">February</option>
-                        <option value="march">March</option>
-                        <option value="september">September</option>
-                        <option value="october">October</option>
+                        <option value="" selected disabled>Select Month</option>
+                        <option value="December">December</option>
+                        <option value="Janurary">Janurary</option>
+                        <option value="March">March</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
                     </select>
                 </div>
 
@@ -73,9 +74,25 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
                     <input type="reset" id="" class="btn btn-outline-secondary px-4 py-2">
                 </div>
             </form>
+            <!-- Loading indicator (initially hidden) -->
+            <div id="loadingIndicator" class="position-absolute text-center start-50 top-50 my-4 d-none">
+                <div class="loader"></div>
+                <p class="mt-2">Loading...</p>
+            </div>
+
+            <!-- Warning message (initially hidden) -->
+            <div id="warningMsg" class="alert alert-warning m-0 mt-3 d-none" role="alert">
+                <i class="fas fa-exclamation-triangle"></i> No subjects found for the specified semester.
+            </div>
+
+            <!-- Background overlay -->
+            <div id="scheduleDistributionOverlay" class="overlay d-none"></div>
         </div>
     </div>
 </div>
 
 <!-- Script to manage sidebar toggle -->
 <script src="../utilities/scripts/dashboard.js?v=<?php echo time(); ?>"></script>
+
+<!-- Script to manage schedule_registration.php -->
+<script src="./scripts/schedule_distribution.js?v=<?php echo time(); ?>"></script>

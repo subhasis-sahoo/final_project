@@ -41,7 +41,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
         <!-- Card Body -->
         <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
             <!-- Application form for students -->
-            <form class="row" action="process_registration.php" method="POST" enctype="multipart/form-data">
+            <form class="row" action="" method="POST" enctype="multipart/form-data">
                 <div class="col-6 mb-4">
                     <label for="name" class="form-label mb-1">Student Name</label>
                     <input type="text" class="form-control fs-custom" id="name" name="name" required>
