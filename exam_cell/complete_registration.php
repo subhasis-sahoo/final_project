@@ -3,9 +3,14 @@
 include_once '../header.php';
 include_once "./sidebar.php";
 
+require_once "functions.php";
+
 // $_SERVER['SCRIPT_NAME'] gives the whole url
 // strrpos($_SERVER['SCRIPT_NAME'], "/") Finding first occourane of '/' from the reverse of the url.
 $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 1); // Accessing clicked php file by substring function
+
+$allExamRegistrationDetails = getAllExamRegistrationDetails();
+// print_r($allExamRegistrationDetails);
 ?>
 
 <!-- Main Content -->
@@ -46,35 +51,33 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
                     <h6 class="col-md-1 fw-bold my-1">SL No.</h6>
                     <h6 class="col-md-2 fw-bold my-1">Student Name</h6>
                     <h6 class="col-md-2 fw-bold my-1">Student SIC</h6>
-                    <h6 class="col-md-3 fw-bold my-1">Registration Card</h6>
                     <h6 class="col-md-2 fw-bold my-1">Apply Date</h6>
+                    <h6 class="col-md-3 fw-bold my-1">Registration Card</h6>
                     <h6 class="col-md-2 text-center fw-bold my-1">Registration Status</h6>
                 </div>
 
                 <!-- Application history page body -->
                 <div class="m-0 p-0 table-body">
                     <!-- Table rows will be inserted by JavaScript -->
-                    <div id="23MCASS01-row" class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom body-data">
-                        <p class="col-md-1 fs-custom my-auto">1</p>
-                        <p class="col-md-2 fs-custom my-auto">Subhasis Sahoo</p>
-                        <p class="col-md-2 fs-custom my-auto">23MMCI50</p>
-                        <a href="#" target="_blank" class="col-md-3 d-flex align-items-center gap-1 text-decoration-none h-100 overflow-x-hidden my-auto fs-custom doc-link">
-                            <i class="fas fa-file-alt my-auto"></i> show registration card
-                        </a>
-                        <p class="col-md-2 fs-custom my-auto">25 March, 2025</p>
-                        <button id="23MCASS01" class="col-md-2 btn border-0 text-white px-4 fs-custom my-auto sts-btn">Complete</button>
-                    </div>
-
-                    <div id="23MCASS02-row" class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom body-data">
-                        <p class="col-md-1 fs-custom my-auto">2</p>
-                        <p class="col-md-2 fs-custom my-auto">Ranjit parida</p>
-                        <p class="col-md-2 fs-custom my-auto">23MMCI26</p>
-                        <a href="#" target="_blank" class="col-md-3 d-flex align-items-center gap-1 text-decoration-none h-100 overflow-x-hidden my-auto fs-custom doc-link">
-                            <i class="fas fa-file-alt my-auto"></i> show registration card
-                        </a>
-                        <p class="col-md-2 fs-custom my-auto">25 March, 2025</p>
-                        <button id="23MCASS02" class="col-md-2 btn border-0 text-white px-4 fs-custom my-auto sts-btn">Complete</button>
-                    </div>
+                    <?php
+                    $index = 0;
+                    while ($data = $allExamRegistrationDetails->fetch_assoc()) {
+                        $student_name = getStudentName($data['student_sic'])->fetch_assoc()['full_name'];
+                        $index += 1;
+                    ?>
+                        <div id="<?php echo $data['student_sic'] ?>Row" class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom body-data">
+                            <p class="col-md-1 fs-custom my-auto"><?php echo $index?></p>
+                            <p class="col-md-2 fs-custom my-auto"><?php echo $student_name ?></p>
+                            <p class="col-md-2 fs-custom my-auto"><?php echo $data['student_sic'] ?></p>
+                            <p class="col-md-2 fs-custom my-auto"><?php echo $data['apply_date'] ?></p>
+                            <a href="registration_card.php?sic=<?php echo $data['student_sic'] ?>" class="col-md-3 d-flex align-items-center gap-1 text-decoration-none h-100 overflow-x-hidden my-auto fs-custom doc-link">
+                                <i class="fas fa-file-alt my-auto"></i> show registration card
+                            </a>
+                            <button id="<?php echo $data['student_sic'] ?>" class="col-md-2 btn btn-success border-0 text-white px-4 fs-custom my-auto sts-btn <?php $data['is_approved'] ? print "disabled" : print "" ?>" ><?php $data['is_approved'] ? print "Completed" : print "Pending" ?></button>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -83,3 +86,6 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
 
 <!-- Script to manage sidebar toggle -->
 <script src="../utilities/scripts/dashboard.js?v=<?php echo time(); ?>"></script>
+
+<!-- Script to complete exam registration of students -->
+<script src="./scripts/complete_registration.js" ></script>
