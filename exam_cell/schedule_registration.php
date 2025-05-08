@@ -41,41 +41,58 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
         <!-- Card Body -->
         <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
             <!-- Application form for schedule exam Registration -->
-            <form class="row" action="process_registration.php" method="POST" enctype="multipart/form-data">
+            <form class="row" id="scheduleRegistrationForm" action="schedule_registration_data.php" method="POST" enctype="multipart/form-data">
                 <div class="col-6 mb-4">
                     <label for="reason" class="form-label mb-1">Exam Registration Year</label>
-                    <input type="text" class="form-control fs-custom" id="name" name="name" value=<?php echo date("Y") ?> readonly>
+                    <input type="text" class="form-control fs-custom" id="year" name="year" value=<?php echo date("Y") ?> readonly>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="to" class="form-label mb-1">Exam Registration Month</label>
-                    <select class="form-select fs-custom" id="month" name="month" required>
-                        <option value="february" selected disabled>Select Month</option>
-                        <option value="february">February</option>
-                        <option value="march">March</option>
-                        <option value="september">September</option>
-                        <option value="october">October</option>
+                    <select class="form-select fs-custom" id="month" name="month">
+                        <option value="" selected disabled>Select Month</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
                     </select>
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="name" class="form-label mb-1">Start Day</label>
-                    <input type="text" class="form-control fs-custom" id="startDay" name="start_day" required>
+                    <input type="text" class="form-control fs-custom" id="startDay" name="start_day" autocomplete="off">
                 </div>
 
                 <div class="col-6 mb-4">
                     <label for="sic" class="form-label mb-1">End Day</label>
-                    <input type="text" class="form-control fs-custom" id="endDay" name="end_day" required>
+                    <input type="text" class="form-control fs-custom" id="endDay" name="end_day" autocomplete="off">
                 </div>
 
                 <div class="d-flex gap-3 d-md-flex justify-content-start">
-                    <input type="submit" value="Schedule" id="" class="btn btn-warning px-4 py-2">
-                    <input type="reset" id="" class="btn btn-outline-secondary px-4 py-2">
+                    <input type="submit" value="Schedule" id="schedule" class="btn btn-warning px-4 py-2">
+                    <input type="reset" id="reset" class="btn btn-outline-secondary px-4 py-2">
                 </div>
+
             </form>
+            <!-- Loading indicator (initially hidden) -->
+            <div id="loadingIndicator" class="position-absolute text-center start-50 top-50 my-4 d-none">
+                <div class="loader"></div>
+                <p class="mt-2">Loading...</p>
+            </div>
+
+            <!-- Warning message (initially hidden) -->
+            <div id="warningMsg" class="alert alert-warning m-0 mt-3 d-none" role="alert">
+                <i class="fas fa-exclamation-triangle"></i> No subjects found for the specified semester.
+            </div>
+
+            <!-- Background overlay -->
+            <div id="scheduleRegistrationOverlay" class="overlay d-none"></div>
         </div>
     </div>
 </div>
 
 <!-- Script to manage sidebar toggle -->
 <script src="../utilities/scripts/dashboard.js?v=<?php echo time(); ?>"></script>
+
+<!-- Script to manage schedule_registration.php -->
+<script src="./scripts/schedule_registration.js?v=<?php echo time(); ?>"></script>
