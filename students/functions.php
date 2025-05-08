@@ -1,6 +1,27 @@
 <?php
     require_once "../dbconnect.php";
 
+    // Returns a patterened random string for application ID
+    function generateApplicationID($sic, $studentName, $program) {
+        // First 2 letters of SIC
+        $sicPrefix = substr($sic, 0, 2);
+    
+        // Program in uppercase
+        $branch = strtoupper($program);
+    
+        // Split the name by space and take first letter of first and last word
+        $nameParts = preg_split('/\s+/', trim($studentName));
+        $firstInitial = strtoupper(substr($nameParts[0], 0, 1));
+        $lastInitial = strtoupper(substr(end($nameParts), 0, 1));
+    
+        // Generate secure 4-digit random number
+        $randomNumber = random_int(1000, 9999);
+    
+        // Construct the ID
+        return $sicPrefix . $branch . $firstInitial . $lastInitial . $randomNumber;
+    }
+    
+
     // Retruns a studnet's faculty advisor name using their sic
     function getFAName($sic){
         $conn = getConnection();
@@ -195,6 +216,27 @@
             $result = $stmt->get_result();
 
             return $result;
+            
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
+
+
+    //Ranjeet functions
+    function submitApplication($applicationID, $sic, $name, $document_path, $reason, $statusLog, $applyDate) {
+        $conn = getConnection();
+
+        try {
+            $qry = "INSERT INTO applications(application_id, student_sic, student_name, supporting_documents, application_reason, status_logs, apply_date) VALUES(?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("sssssss", $applicationID, $sic, $name, $document_path, $reason, $statusLog, $applyDate);
+            $res = $stmt->execute();
+
+            return $res;
             
         } catch(Exception $e) {
             echo $e->getMessage();
