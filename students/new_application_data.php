@@ -18,13 +18,18 @@ $program = getStudentsDetails($sic)->fetch_assoc()['program'];
 // Generate a patterened applicationId
 $applicationID = generateApplicationID($sic, $studentName, $program);
 
+// Analysing application stage
+$status = json_decode($statusLog);
+$currentStage = $status->stage1->name;
+// echo $currentStage;
+
 
 $document_new_name = time() . "--" . $document['name'];
 $document_path = "../public/application_documents/" . $document_new_name;
 
 
 if (move_uploaded_file($document['tmp_name'], $document_path)) {
-    $res = submitApplication($applicationID, $sic, $name, $document_path, $reason, $statusLog, $applyDate);
+    $res = submitApplication($applicationID, $sic, $name, $document_path, $reason, $statusLog, $currentStage, $applyDate);
     if($res) {
         $response = [
             "status" => "success",
