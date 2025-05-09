@@ -13,6 +13,7 @@
 
     // Function to generate random string for IDs
     $registrationID = generateSecureRandomString(8);
+    $admitCardID = generateSecureRandomString(8);
 
     // Check if the student is already registerd
     $is_registred = isStudnetRegistered($sic);
@@ -28,9 +29,10 @@
         ];
     } else {
         // add examRegistration data into exam_registration table
-        $res = addExamRegistrationData($registrationID, $sic, $examRegistrationData, $applyDate);
+        $res1 = addExamRegistrationData($registrationID, $sic, $examRegistrationData, $applyDate);
+        $res2 = addAdmitCardDetails($admitCardID, $registrationID);
 
-        if($res) {
+        if($res1 && $res2) {
             $response = [
                 "status" => "success",
                 "data" => "",

@@ -19,8 +19,8 @@ stsBtn.forEach((btn) => {
             console.log(data);
 
             if(data.status === 'success') {
-                document.getElementById(btnID).innerHTML = "Completed";
-                document.getElementById(btnID).classList.add("disabled");
+                // document.getElementById(btnID).innerHTML = "Completed";
+                document.getElementById(`${btnID}Row`).classList.add("d-none");
             }
         } catch (error) {
             console.log("Error while completing exam registration for student's: ", error);

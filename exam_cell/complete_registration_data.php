@@ -4,7 +4,7 @@
 
     $sic = json_decode(file_get_contents('php://input'), true)['sic'];
     // print_r($sic);
-    $is_approved = 1;
+    $is_approved = "completed";
     $approval_date = date("Y-m-d");
 
     $response = [];
