@@ -69,10 +69,10 @@ $studentName = getStudentsDetails($sic)->fetch_assoc()['full_name'];
                     <label for="reason" class="form-label mb-1">Reason for Application</label>
                     <select class="form-select fs-custom" id="reasonForApplication" name="reason" autocomplete="off">
                         <option value="" selected disabled>Select reason</option>
-                        <option value="Allow for Exam Registration (Unpaid Dues Issue)">Allow for Exam Registration (Unpaid Dues Issue)</option>
-                        <option value="Allow to Download Admit card (Low Attendance Issue)">Allow to Download Admit card (Low Attendance Issue)</option>
-                        <option value="Allow to Download Admit card (Unpaid Dues Issue)">Allow to Download Admit card (Unpaid Dues Issue)</option>
-                        <option value="Allow to Download Admit card (Both Reason 2 and 3)">Allow to Download Admit card (Both Reason 2 and 3)</option>
+                        <option value="Request for Exam Registration (Unpaid Dues Issue)">Request for Exam Registration (Unpaid Dues Issue)</option>
+                        <option value="Request For Admit card (Low Attendance Issue)">Request For Admit card (Low Attendance Issue)</option>
+                        <option value="Request For Admit card (Unpaid Dues Issue)">Request For Admit card (Unpaid Dues Issue)</option>
+                        <option value="Request For Admit card (Both Reason 2 and 3)">Request For Admit card (Both Reason 2 and 3)</option>
                     </select>
                 </div>
                 

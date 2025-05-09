@@ -42,7 +42,7 @@
         $conn = getConnection();
 
         try {
-            $qry = "SELECT * FROM exam_registrations";
+            $qry = "SELECT * FROM exam_registrations WHERE is_approved = 'pending'";
             $stmt = $conn->prepare($qry);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -123,7 +123,7 @@
         try {
             $qry = "UPDATE exam_registrations SET is_approved = ?, approval_date = ? WHERE student_sic = ?";
             $stmt = $conn->prepare($qry);
-            $stmt->bind_param("iss", $is_approved, $approval_date, $sic);
+            $stmt->bind_param("sss", $is_approved, $approval_date, $sic);
             $res = $stmt->execute();
 
             return $res;

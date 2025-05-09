@@ -3,24 +3,16 @@
 include_once '../header.php';
 include_once "./sidebar.php";
 
+$sic = $_SESSION['sic'];
+
 // $_SERVER['SCRIPT_NAME'] gives the whole url
 // strrpos($_SERVER['SCRIPT_NAME'], "/") Finding first occourane of '/' from the reverse of the url.
 $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 1); // Accessing clicked php file by substring function
 
-$applications = [];
-for ($i = 1; $i <= 15; $i++) {
-    $applications[] = [
-        'id' => 'APP' . str_pad($i, 3, '0', STR_PAD_LEFT),
-        'datetime' => '2025-04-18 10:' . str_pad($i, 2, '0', STR_PAD_LEFT) . ' AM',
-        'reason' => 'Application reason #' . $i,
-        'document' => 'uploads/doc_' . $i . '.pdf',
-        'status' => [
-            ['Stage' => 'Submitted', 'Status' => 'Completed'],
-            ['Stage' => 'Dean Review', 'Status' => $i % 2 ? 'Approved' : 'Rejected'],
-            ['Stage' => 'Exam Cell', 'Status' => 'Pending'],
-        ]
-    ];
-}
+require_once "functions.php";
+
+$allApplications = getAllApplications($sic);
+// !$allApplications ? print_r(!$allApplications) : print_r($allApplications);
 ?>
 
 <!-- Main Content -->
@@ -57,82 +49,79 @@ for ($i = 1; $i <= 15; $i++) {
         <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
             <!-- Applications history -->
             <div class="d-flex flex-column">
-                <!-- Application history page header -->
-                <div class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom rounded-top-2 table-header">
-                    <h6 class="col-md-2 fw-bold my-1">Application ID</h6>
-                    <h6 class="col-md-2 fw-bold my-1">Apply Date</h6>
-                    <h6 class="col-md-3 fw-bold my-1">Reason For Application</h6>
-                    <h6 class="col-md-3 fw-bold my-1">Document</h6>
-                    <h6 class="col-md-1 text-center fw-bold my-1">Status</h6>
-                </div>
-
-                <!-- Application history page body -->
-                <div class="m-0 p-0 table-body">
-                    <!-- Table rows will be inserted by JavaScript -->
-                    <div id="23MCASS01-row" class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom body-data">
-
-                        <p class="col-md-2 fs-custom my-auto">23MCASS01</p>
-                        <p class="col-md-2 fs-custom my-auto">18 August, 2025</p>
-                        <p class="col-md-3 fs-custom my-auto">Request to allow for exam registration</p>
-                        <a href="#" target="_blank" class="col-md-3 d-flex align-items-center gap-1 text-decoration-none h-100 overflow-x-hidden my-auto fs-custom doc-link">
-                            <i class="fas fa-file-alt my-auto"></i> 23mmci50_application.pdf
-                        </a>
-                        <button id="23MCASS01" class="col-md-1 btn border-0 text-white px-4 fs-custom my-auto sts-btn">View</button>
+                <!-- Checking the student have any applications or not -->
+                <?php
+                if (!$allApplications) {
+                ?>
+                    <div class="d-flex flex-column justify-content-center align-items-center mx-auto my-3">
+                        <i class="fa-solid fa-file mb-2 fs-1"></i>
+                        <p class="fw-semibold text-capitalize text-dark mb-0">No Applications Found</p>
+                        <p class="text-dark mb-0">There are currently no applications to you submited.</p>
+                    </div>
+                <?php
+                } else {
+                ?>
+                    <!-- Application history page header -->
+                    <div class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom rounded-top-2 table-header">
+                        <h6 class="col-md-2 fw-bold my-1">Application ID</h6>
+                        <h6 class="col-md-2 fw-bold my-1">Apply Date</h6>
+                        <h6 class="col-md-4 fw-bold my-1">Reason For Application</h6>
+                        <h6 class="col-md-3 fw-bold my-1">Document</h6>
+                        <h6 class="col-md-1 text-center fw-bold my-1">Status</h6>
                     </div>
 
-                    <div id="23MCASS02-row" class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom body-data">
-
-                        <p class="col-md-2 fs-custom my-auto">23MCASS02</p>
-                        <p class="col-md-2 fs-custom my-auto">18 August, 2025</p>
-                        <p class="col-md-3 fs-custom my-auto">Request to allow for exam registration</p>
-                        <a href="#" target="_blank" class="col-md-3 d-flex align-items-center gap-1 text-decoration-none h-100 overflow-x-hidden my-auto fs-custom doc-link">
-                            <i class="fas fa-file-alt my-auto"></i> 23mmci50_application.pdf
-                        </a>
-                        <button id="23MCASS02" class="col-md-1 btn border-0 text-white px-4 fs-custom my-auto sts-btn">View</button>
+                    <!-- Application history page body -->
+                    <div class="m-0 p-0 table-body">
+                        <!-- Table rows will be inserted by JavaScript -->
+                        <?php
+                        while ($data = $allApplications->fetch_assoc()) {
+                            $fileName = $data['supporting_documents'];
+                            $lastHyphenPos = strrpos($fileName, '--');
+                            $formattedFileName = substr($fileName, $lastHyphenPos + 2);
+                        ?>
+                            <div id="<?php echo $data['application_id'] ?>Row" class="row d-flex justify-content-between w-100 px-3 m-0 py-2 border-bottom body-data">
+                                <p class="col-md-2 fs-custom my-auto"><?php echo $data['application_id'] ?></p>
+                                <p class="col-md-2 fs-custom my-auto"><?php echo $data['apply_date'] ?></p>
+                                <p class="col-md-4 fs-custom my-auto"><?php echo $data['application_reason'] ?></p>
+                                <a href="<?php echo $data['supporting_documents'] ?>" target="_blank" class="col-md-3 d-flex align-items-center gap-1 text-decoration-none h-100 my-auto fs-custom ps-2 pe-3 doc-link">
+                                    <i class="fas fa-file-alt my-auto"></i> 
+                                    <div class=""><?php echo $formattedFileName ?></div>
+                                </a>
+                                <button id="<?php echo $data['application_id'] ?>" class="col-md-1 btn border-0 text-white px-4 fs-custom my-auto sts-btn">View</button>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
-                </div>
 
-                <!-- Application status pop-up -->
-                <div class="position-absolute start-50 translate-middle d-none status-card">
-                    <div class="d-flex align-items-end gap-1 bg-white p-0 pb-2 card-header">
-                        <h5 class="mb-0">Application Status</h5>
-                        <span id="appId" class="mb-0 fw-medium app-id">[23MCASS01]</span>
-                        <div class="close-icon">×</div>
+                    <!-- Application status pop-up -->
+                    <div class="position-absolute start-50 translate-middle d-none status-card">
+                        <div class="d-flex align-items-end gap-1 bg-white p-0 pb-2 card-header">
+                            <h5 class="mb-0">Application Status</h5>
+                            <span id="appId" class="mb-0 fw-medium app-id">[23MCASS01]</span>
+                            <div class="close-icon">×</div>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Stage</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Comment</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statusCardBody">
+
+                            </tbody>
+                        </table>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Stage</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th>Comment</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Faculty Advisor</td>
-                                <td class="text-success">Completed</td>
-                                <td>20-08-2025</td>
-                                <td>Forwarded to DEAN</td>
-                            </tr>
-                            <tr>
-                                <td>Acconts Section</td>
-                                <td class="text-warning">Pending</td>
-                                <td>20-08-2025</td>
-                                <td class="text-secondary">-</td>
-                            </tr>
-                            <tr>
-                                <td>DEAN</td>
-                                <td class="text-success">Completed</td>
-                                <td>20-08-2025</td>
-                                <td class="">Don't do this next time</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
 
-                <!-- Background overlay -->
-                <div id="overlay" class="overlay d-none"></div>
+                    <!-- Background overlay -->
+                    <div id="overlay" class="overlay d-none"></div>
+                <?php
+                }
+
+                ?>
             </div>
         </div>
     </div>

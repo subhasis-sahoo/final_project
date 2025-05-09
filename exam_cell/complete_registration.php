@@ -73,7 +73,7 @@ $allExamRegistrationDetails = getAllExamRegistrationDetails();
                             <a href="registration_card.php?sic=<?php echo $data['student_sic'] ?>" class="col-md-3 d-flex align-items-center gap-1 text-decoration-none h-100 overflow-x-hidden my-auto fs-custom doc-link">
                                 <i class="fas fa-file-alt my-auto"></i> show registration card
                             </a>
-                            <button id="<?php echo $data['student_sic'] ?>" class="col-md-2 btn btn-success border-0 text-white px-4 fs-custom my-auto sts-btn <?php $data['is_approved'] ? print "disabled" : print "" ?>" ><?php $data['is_approved'] ? print "Completed" : print "Pending" ?></button>
+                            <button id="<?php echo $data['student_sic'] ?>" class="col-md-2 btn btn-success border-0 text-white px-4 fs-custom my-auto sts-btn" >Pending</button>
                         </div>
                     <?php
                     }
@@ -85,7 +85,7 @@ $allExamRegistrationDetails = getAllExamRegistrationDetails();
 </div>
 
 <!-- Script to manage sidebar toggle -->
-<script src="../utilities/scripts/dashboard.js?v=<?php echo time(); ?>"></script>
+<script src="../utilities/scripts/dashboard.js?v=<?php echo time() ?>"></script>
 
 <!-- Script to complete exam registration of students -->
-<script src="./scripts/complete_registration.js" ></script>
+<script src="./scripts/complete_registration.js?v=<?php echo time() ?>" ></script>

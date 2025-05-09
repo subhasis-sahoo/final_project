@@ -19,7 +19,7 @@ $program = getStudentsDetails($sic)->fetch_assoc()['program'];
 $applicationID = generateApplicationID($sic, $studentName, $program);
 
 
-$document_new_name = time() . "-" . $document['name'];
+$document_new_name = time() . "--" . $document['name'];
 $document_path = "../public/application_documents/" . $document_new_name;
 
 

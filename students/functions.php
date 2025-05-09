@@ -174,9 +174,27 @@
             $qry = "INSERT INTO exam_registrations(registration_id, student_sic, registration_data, apply_date) VALUES(?, ?, ?, ?)";
             $stmt = $conn->prepare($qry);
             $stmt->bind_param("ssss", $registrationID, $sic, $examRegistrationData, $applyDate);
-            $result = $stmt->execute();
+            $res = $stmt->execute();
 
-            return $result;
+            return $res;
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
+    // add admit card details into admit_cards table
+    function addAdmitCardDetails($admitCardID, $registrationID) {
+        $conn = getConnection();
+
+        try {
+            $qry = "INSERT INTO admit_cards(admit_card_id, registration_id ) VALUES(?, ?)";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("ss", $admitCardID, $registrationID);
+            $res = $stmt->execute();
+
+            return $res;
         } catch(Exception $e) {
             echo $e->getMessage();
         } finally {
@@ -226,7 +244,9 @@
 
 
 
-    //Ranjeet functions
+    //Ranjeet's functions
+
+    // Function to add an application details to the applications table
     function submitApplication($applicationID, $sic, $name, $document_path, $reason, $statusLog, $applyDate) {
         $conn = getConnection();
 
@@ -244,4 +264,51 @@
             $conn->close();
         }
     }
+
+    // Returns all applications from applications table
+    function getAllApplications($sic) {
+        $conn = getConnection();
+
+        try {
+            $qry = "SELECT * FROM applications WHERE student_sic = ?";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("s", $sic);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if($result->num_rows > 0) {
+                return $result;
+            } else {
+                return false;
+            }
+            
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
+    
+    // Returns all applications from applications table
+    function getApplicationStatus($applicationId) {
+        $conn = getConnection();
+
+        try {
+            $qry = "SELECT 	status_logs FROM applications WHERE application_id = ?";
+            $stmt = $conn->prepare($qry);
+            $stmt->bind_param("s", $applicationId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            return $result;
+            
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        } finally {
+            $conn->close();
+        }
+    }
+
+
 ?>
