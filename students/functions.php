@@ -169,14 +169,14 @@ function isStudnetRegistered($sic)
 }
 
 // add examRegistration data into exam_registration table
-function addExamRegistrationData($registrationID, $sic, $examRegistrationData, $applyDate)
+function addExamRegistrationData($registrationID, $sic, $accountsSectionApproval, $examRegistrationData, $applyDate)
 {
     $conn = getConnection();
 
     try {
-        $qry = "INSERT INTO exam_registrations(registration_id, student_sic, registration_data, apply_date) VALUES(?, ?, ?, ?)";
+        $qry = "INSERT INTO exam_registrations(registration_id, student_sic, accounts_section_approval, registration_data, apply_date) VALUES(?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($qry);
-        $stmt->bind_param("ssss", $registrationID, $sic, $examRegistrationData, $applyDate);
+        $stmt->bind_param("sssss", $registrationID, $sic, $accountsSectionApproval, $examRegistrationData, $applyDate);
         $res = $stmt->execute();
 
         return $res;

@@ -60,8 +60,8 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
                 <div class="row d-flex justify-content-between w-100 m-0 p-0 table-header">
                     <div class="col-md-1 fw-bold p-2 pb-3 border border-secondary border-end-0 m-0">Sl No.</div>
                     <div class="col-md-7 fw-bold p-2 pb-3 border border-secondary border-end-0 m-0">Amount Head</div>
-                    <div class="col-md-2 fw-bold p-2 pb-3 border border-secondary border-end-0 m-0">Opening Balacing</div>
-                    <div class="col-md-2 fw-bold p-2 pb-3 border border-secondary m-0">Closeing Balacing</div>
+                    <div class="col-md-2 fw-bold p-2 pb-3 border border-secondary border-end-0 m-0">Opening Balance</div>
+                    <div class="col-md-2 fw-bold p-2 pb-3 border border-secondary m-0">Closeing Balance</div>
                 </div>
 
                 <!-- Dues Details page body -->
