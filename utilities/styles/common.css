@@ -34,9 +34,9 @@
 .doc-link {
     color: black;
     cursor: pointer;
-    width: 100%;
-    max-width: 16rem;
-    margin-right: 1.6rem;
+    /* width: 100%; */
+    /* max-width: 16rem; */
+    /* margin-right: 1.6rem; */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
