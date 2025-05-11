@@ -3,7 +3,63 @@
 include_once "../header.php";
 include_once "sidebar.php";
 
+$sic = $_SESSION['sic'];
+
+$roles = [
+    "DEAN" => "dean",
+    "Accounts" => "accounts section",
+    "Examination Cell" => "exam cell",
+    "Faculty Advisor" => "faculty advisor"
+];
+
+require_once "functions.php";
+
+$staffRole = getStaffRole($sic)->fetch_assoc()['role'];
+// print_r($staffRole);
+$formatedStaffRole = $roles[$staffRole];
+// print_r($formatedStaffRole);
+
+
+// Create a staffrole sessison
+$_SESSION['role'] = $formatedStaffRole;
+
 // Actual functional cards tailered with data that comes from database
+$realCards = [
+    [
+        'title' => 'Publish Notices',
+        'color' => 'indianred',
+        'icon' => 'fa-bullhorn',
+        'content' => [
+            'Total Notices' => '2'
+        ],
+        'actions' => [
+            ['text' => 'Publish New Notice', 'icon' => 'fa-upload', 'link' => 'new_notice.php'],
+            ['text' => 'All Notices', 'icon' => 'fa-history', 'link' => 'all_notices.php']
+        ]
+    ],
+    [
+        'title' => 'Students Dues Info.',
+        'color' => 'seagreen',
+        'icon' => 'fa-money-bill-wave',
+        'content' => [
+            'Total Students' => '15'
+        ],
+        'actions' => [
+            ['text' => 'Account Details', 'icon' => 'fa-credit-card', 'link' => 'account_details.php']
+        ]
+    ],
+    [
+        'title' => 'Application Box',
+        'color' => 'orange',
+        'icon' => 'fa-box-archive',
+        'content' => [
+            'Total Applications' => '3',
+        ],
+        'actions' => [
+            ['text' => 'Review Application', 'icon' => 'fa-magnifying-glass', 'link' => 'review_applications.php']
+        ]
+    ]
+];
 
 // Sample data for cards - In a real application, this would come from a database
 $demoCards = [
@@ -187,9 +243,9 @@ function renderDashboardCards($card) {
     <div class="row mx-0 d-felx flex-wrap justify-content-between">
         <?php
         // Render each real cards in the grid
-        // foreach ($realCards as $card) {
-        //     renderDashboardCards($card);
-        // }
+        foreach ($realCards as $card) {
+            renderDashboardCards($card);
+        }
 
         // Render each demo cards in the grid
         foreach ($demoCards as $card) {
