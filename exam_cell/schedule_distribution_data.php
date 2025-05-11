@@ -22,11 +22,21 @@ if ((int) $startDay > (int) $endDay) {
     $scheduleRegistrationDeadline = scheduleDistributionDeadline($startDate, $endDate);
 
     if ($scheduleRegistrationDeadline) {
-        $response = [
-            "status" => "success",
-            "data" => "",
-            "msg" => "Deadline for admit card distribution is scheduled successfully."
-        ];
+        $res = addAdmitCards();
+
+        if($res) {
+            $response = [
+                "status" => "success",
+                "data" => "",
+                "msg" => "Deadline for admit card distribution is scheduled successfully."
+            ];
+        } else {
+            $response = [
+                "status" => "success",
+                "data" => "",
+                "msg" => "Deadline for admit card distribution is scheduled successfully."
+            ];
+        }
     } else {
         $response = [
             "status" => "fail",
