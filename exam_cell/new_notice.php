@@ -36,27 +36,28 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
         <!-- Card Body -->
         <div class="card-body p-4 border rounded-bottom-2 shadow-sm">
             <!-- Application form for schedule Admit Card Distribution -->
-            <form class="row" id="scheduleDistributionForm" action="schedule_distribution_data.php" method="POST" enctype="multipart/form-data">
+            <form class="row" id="searchBarForm" action="send_message.php" method="POST" enctype="multipart/form-data">
                 <div class="col-6 mb-4">
-                    <label for="to" class="form-label mb-1">Apply Date</label>
+                    <label for="apply_date" class="form-label mb-1">Apply Date</label>
                     <input type="text" class="form-control fs-custom" id="apply_date" name="apply_date" value="<?php echo date('d M, Y') ?>" readonly>
                 </div>
 
                 <div class="col-6 mb-4">
-                    <label for="to" class="form-label mb-1">Select Reciever</label>
-                    <select class="form-select fs-custom" id="month" name="month" required>
-                        <option value="" selected disabled>Select Reciever</option>
-                        <option value="December">December</option>
-                        <option value="Janurary">Janurary</option>
-                        <option value="March">March</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
+                    <label for="selectReceiver" class="form-label mb-1">Select Receiver</label>
+                    <select class="form-select fs-custom" id="selectReceiver" name="receiver" required>
+                        <option value="" selected disabled>Select Receiver</option>
+                        <option value="Students">Students</option>
+                        <option value="Accounts Section">Accounts Section</option>
+                        <option value="Dean Of Academics">Dean Of Academics</option>
+                        <option value="Faculty">Faculty</option>
+                        <!-- <option value="June">June</option> -->
                     </select>
+                    <!-- <p class="d-none text-danger" id="invalidReceiver"></p> -->
                 </div>
 
                 <div class="d-flex flex-column mb-1">
-                    <label for="comment" class="form-label mb-1 mt-2 fw-medium">Add Comment</label>
-                    <textarea name="comment" id="comment" class="form-control w-100 rounded-2" rows="5" placeholder="Write a message for the student ..." style="font-size: .85rem;"></textarea>
+                    <label for="message" class="form-label mb-1 mt-2 fw-medium">Add Message</label>
+                    <textarea name="message" id="message" class="form-control w-100 rounded-2" rows="5" placeholder="Write a message for the student ..." style="font-size: .85rem;" required></textarea>
                 </div>
 
                 <div class="mb-4">
@@ -66,7 +67,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
                 </div>
 
                 <div class="d-flex gap-3 d-md-flex justify-content-start">
-                    <input type="submit" value="Schedule" id="" class="btn btn-warning px-4 py-2">
+                    <input type="submit" value="publish" id="" class="btn btn-warning px-4 py-2">
                     <input type="reset" id="" class="btn btn-outline-secondary px-4 py-2">
                 </div>
             </form>
@@ -77,8 +78,8 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
             </div>
 
             <!-- Warning message (initially hidden) -->
-            <div id="warningMsg" class="alert alert-warning m-0 mt-3 d-none" role="alert">
-                <i class="fas fa-exclamation-triangle"></i> No subjects found for the specified semester.
+            <div id="warningMsg" class="alert alert-success m-0 mt-3 d-none" role="alert">
+                <i class="fas fa-exclamation-triangle"></i> message send successfully
             </div>
 
             <!-- Background overlay -->
@@ -91,4 +92,4 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
 <script src="../utilities/scripts/dashboard.js?v=<?php echo time(); ?>"></script>
 
 <!-- Script to manage schedule_registration.php -->
-<script src="./scripts/schedule_distribution.js?v=<?php echo time(); ?>"></script>
+<script src="./scripts/message_form.js?v=<?php echo time(); ?>"></script>

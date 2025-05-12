@@ -33,28 +33,37 @@ $res1 = 1;
 $currentStage = 'accounts section';
 $isChecked = 0;
 
-if($status == 'Reject') {
+if ($status == 'Reject') {
     // echo "entered";
     $currentStage = 'dean';
     $isChecked = 1;
 }
-    
-$res2 = updateApplicationStatus($statusLog, $currentStage, $isChecked, $applicationID);
-    
-if ($res1 && $res2) {
-    $response = [
-        "status" => "success",
-        "data" => "",
-        "msg" => "Application updated successfully."
-    ];
-} else {
-    $response = [
-        "status" => "fail",
-        "data" => "",
-        "msg" => "Internal server error!!!"
-    ];
+
+if ($status == 'Approve') {
+    $deanApproval = 'Completed';
+    $studentAdmitCardID = getStudentAdmitCardID($studentSic)->fetch_assoc()['admit_card_id'];
+    // print_r($studentAdmitCardID);
+    $res1 = updateAdmitCardApprovalStatus($deanApproval, $studentAdmitCardID);
+}
+
+
+if ($res1) {
+    $res2 = updateApplicationStatus($statusLog, $currentStage, $isChecked, $applicationID);
+
+    if ($res1 && $res2) {
+        $response = [
+            "status" => "success",
+            "data" => "",
+            "msg" => "Application updated successfully."
+        ];
+    } else {
+        $response = [
+            "status" => "fail",
+            "data" => "",
+            "msg" => "Internal server error!!!"
+        ];
+    }
 }
 
 
 echo json_encode($response);
-?>

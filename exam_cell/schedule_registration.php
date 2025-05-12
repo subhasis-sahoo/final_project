@@ -53,6 +53,7 @@ $page = substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") + 
                         <option value="" selected disabled>Select Month</option>
                         <option value="February">February</option>
                         <option value="March">March</option>
+                        <option value="May">May</option>
                         <option value="September">September</option>
                         <option value="October">October</option>
                     </select>

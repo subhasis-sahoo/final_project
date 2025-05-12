@@ -125,6 +125,46 @@ function updateExamRegistrationApprovalStatus($accountsSectionApproval, $student
     }
 }
 
+// Retruns a studnet's name and sic using the admit registration id
+function getStudentAdmitCardID($studentSic)
+{
+    $conn = getConnection();
+    // print_r($conn);
+
+    try {
+        $qry = "SELECT ac.admit_card_id AS admit_card_id FROM admit_cards AS ac JOIN exam_registrations AS ex ON ac.registration_id = ex.registration_id JOIN students AS s ON ex.student_sic = s.sic WHERE s.sic = ?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s", $studentSic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    } catch (Exception $e) {
+        $e->getMessage();
+    } finally {
+        $conn->close();
+    }
+}
+
+// Update account section approval status in exam_registrations table
+function updateAdmitCardApprovalStatus($accountsSectionApproval, $studentAdmitCardID)
+{
+    $conn = getConnection();
+
+    try {
+        $qry = "UPDATE admit_cards SET accounts_section_approval = ? WHERE admit_card_id = ?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("ss", $accountsSectionApproval, $studentAdmitCardID);
+        $result = $stmt->execute();
+
+        return $result;
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    } finally {
+        $conn->close();
+    }
+}
+
 // Returns student's accounts details form student_dues table
 function getStudentAccountsDetails($sic)
 {

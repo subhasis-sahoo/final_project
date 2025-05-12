@@ -313,3 +313,62 @@ function getApplicationStatus($applicationId)
         $conn->close();
     }
 }
+
+
+function cheack_admitcard_eligibility($sic)
+{
+    $conn = getConnection();
+    // print_r($conn);
+
+    try {
+        $qry = "SELECT ad.exam_cell_approval AS is_approve FROM admit_cards ad JOIN exam_registrations AS er ON er.registration_id = ad.registration_id  WHERE er.student_sic=?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s", $sic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    } catch (Exception $e) {
+        $e->getMessage();
+    } finally {
+        $conn->close();
+    }
+}
+
+
+function getStudentsDetails_by_sic($sic)
+{
+    $conn = getConnection();
+
+    try {
+        $qry = "SELECT * FROM students WHERE sic=?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s", $sic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    } finally {
+        $conn->close();
+    }
+}
+
+function fetch_messages()
+{
+    $conn = getConnection();
+    try {
+
+        $qry = "SELECT * FROM dms";
+        $stmt = $conn->prepare($qry);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    } catch (Exception $ex) {
+        echo $ex->getMessage();
+    } finally {
+        $conn->close();
+    }
+}

@@ -20,13 +20,17 @@ function addAdmitCards()
 
             $studentDue = getStudentDue($sic)->fetch_assoc()['amount'];
 
-            if($studentDue != 0) {
+            $studentAttendance = getStudentsDetails($sic)->fetch_assoc()['is_attendance_low'];
+
+            $studentAttendance == 'yes' ? $deanApproval = 'pending' : $deanApproval = 'completed';
+
+            if ($studentDue != 0) {
                 $accountsSectionApproval = 'pending';
             } else {
                 $accountsSectionApproval = 'completed';
             }
 
-            $deanApproval = 'pending';
+            // $deanApproval = 'pending';
 
             $admitCardID = generateSecureRandomString(8);
 
@@ -67,7 +71,7 @@ function getAllAdmitCardData()
         $stmt->execute();
         $result = $stmt->get_result();
 
-        if($result->num_rows > 0) {
+        if ($result->num_rows > 0) {
             return $result;
         } else {
             return false;
@@ -316,5 +320,21 @@ function allowToDownlaodAdmitCard($examCellAapproval, $admitCardID)
     }
 }
 
+function add_message($sender_role, $receiver, $message, $date, $new_name)
+{
+    $conn = getConnection();
 
-?>
+
+    try {
+        $qry = "INSERT INTO dms (sender_role,	receiver,	message	,doc,	date) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($qry);
+        // $departments = json_encode($receiver);
+        $stmt->bind_param("sssss", $sender_role, $receiver, $message, $new_name, $date);
+        $res = $stmt->execute();
+        return $res;
+    } catch (Exception $ex) {
+        echo $ex->getMessage();
+    } finally {
+        $conn->close();
+    }
+}

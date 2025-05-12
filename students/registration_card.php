@@ -108,7 +108,7 @@ $accountsSectionApproval = getExamRegistrationDetails($sic)->fetch_assoc()['acco
                 <!-- Student photograph -->
                 <div class="col-3 px-0 d-flex justify-content-end">
                     <!-- Needs to replace static image of student to image store in DB -->
-                    <img src="../public/assets/Subhasis_Sahoo-Photo.jpg" alt="student_image" width="130">
+                    <img src="../<?php echo $studentDetailes['profile_photo_path'] ?>" alt="student_image" width="130">
                 </div>
             </div>
 

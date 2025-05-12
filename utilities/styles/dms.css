@@ -1,0 +1,78 @@
+.top-header {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 0;
+}
+
+.brand-logo {
+    max-height: 40px;
+}
+
+.sidebar {
+    background-color: #fff;
+    border-right: 1px solid #e9ecef;
+    min-height: calc(100vh - 60px);
+}
+
+.sidebar .nav-link {
+    color: #333;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #f1f1f1;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-item {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.message-table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.message-link {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.message-preview {
+    color: #6c757d;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.message-date {
+    white-space: nowrap;
+}
+
+.user-dropdown img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.unread {
+    font-weight: bold;
+}
+
+.message-action-btn {
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.message-action-btn:hover {
+    color: #0d6efd;
+}

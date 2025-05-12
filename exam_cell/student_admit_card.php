@@ -18,6 +18,7 @@ $sic = $_GET['student_sic'];
 // Get student's details
 $studentDetailes = getStudentsDetails($sic)->fetch_assoc();
 
+
 // Studnet semester details array to display in UI
 $semester = [1 => "1st", 2 => "2nd", 3 => "3rd", 4 => "4th"];
 
@@ -91,7 +92,7 @@ $semester = [1 => "1st", 2 => "2nd", 3 => "3rd", 4 => "4th"];
                 <!-- Student photograph -->
                 <div class="col-3 px-0 d-flex justify-content-end">
                     <!-- Needs to replace static image of student to image store in DB -->
-                    <img src="../public/assets/Subhasis_Sahoo-Photo.jpg" alt="student_image" width="130">
+                    <img src="../<?php echo $studentDetailes['profile_photo_path'] ?>" alt="student_image" width="130">
                 </div>
             </div>
 

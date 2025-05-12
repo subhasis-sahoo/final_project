@@ -18,34 +18,37 @@ $applicationReason = getApplicationDeatils($applicationID)->fetch_assoc()['appli
 // print_r($applicationReason);
 
 
-$res1 = 1;
-if($status == 'Approve' && $applicationReason == 'Request for Exam Registration (Unpaid Dues Issue)') {
+$res1 = 0;
+if ($status == 'Approve' && $applicationReason == 'Request for Exam Registration (Unpaid Dues Issue)') {
     // echo "Entered";
     $accountsSectionApproval = 'Completed';
-    $res2 = updateExamRegistrationApprovalStatus($accountsSectionApproval, $studentSic);
+    $res1 = updateExamRegistrationApprovalStatus($accountsSectionApproval, $studentSic);
 }
 
-// if($status == 'Approve' && $applicationReason == 'Request For Admit card (Unpaid Dues Issue)') {
-//     $accountsSectionApproval = 'Completed';
-//     $res2 = updateAdmitCardApprovalStatus($accountsSectionApproval, $studentSic);
-// }
-    
-$res2 = updateApplicationStatus($statusLog, $applicationID);
-    
-if ($res1 && $res2) {
-    $response = [
-        "status" => "success",
-        "data" => "",
-        "msg" => "Application updated successfully."
-    ];
-} else {
-    $response = [
-        "status" => "fail",
-        "data" => "",
-        "msg" => "Internal server error!!!"
-    ];
+if ($status == 'Approve' && $applicationReason != 'Request for Exam Registration (Unpaid Dues Issue)') {
+    // echo "Entered-else";
+    $accountsSectionApproval = 'Completed';
+    $studentAdmitCardID = getStudentAdmitCardID($studentSic)->fetch_assoc()['admit_card_id'];
+    // print_r($studentAdmitCardID);
+    $res1 = updateAdmitCardApprovalStatus($accountsSectionApproval, $studentAdmitCardID);
 }
 
+if ($res1) {
+    $res2 = updateApplicationStatus($statusLog, $applicationID);
+
+    if ($res2) {
+        $response = [
+            "status" => "success",
+            "data" => "",
+            "msg" => "Application updated successfully."
+        ];
+    } else {
+        $response = [
+            "status" => "fail",
+            "data" => "",
+            "msg" => "Internal server error!!!"
+        ];
+    }
+}
 
 echo json_encode($response);
-?>

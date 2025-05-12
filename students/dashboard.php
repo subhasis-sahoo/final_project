@@ -23,6 +23,10 @@ $applicationCount = 0;
 $allApplications = getAllApplications($sic);
 !$allApplications ? $applicationCount = 0 : $applicationCount = $allApplications->num_rows;
 
+$studentAttendance = getStudentsDetails($sic)->fetch_assoc()['is_attendance_low'];
+
+$studentAttendance == 'yes' ? $attendanceStatus = 'Below 80%' : $attendanceStatus = 'Above 80%';
+
 
 // Actual functional cards tailered with data that comes from database
 $realCards = [
@@ -45,9 +49,7 @@ $realCards = [
         'color' => 'purple', 
         'icon' => 'fa-clipboard-check',
         'content' => [
-            'Subjects' => '0',
-            '0 to 79%' => '-',
-            '80% to 100%' => '9'
+            'Attendance Status' => $attendanceStatus
         ],
         'actions' => [
             ['text' => 'More Info', 'icon' => 'fa-info-circle', 'link' => '#']
@@ -88,7 +90,7 @@ $realCards = [
             'Exam Date' => 'April 10, 2025'
         ],
         'actions' => [
-            ['text' => 'Download', 'icon' => 'fa-download', 'link' => 'download-admit-card.php']
+            ['text' => 'Download', 'icon' => 'fa-download', 'link' => 'download_admit_card.php']
         ]
     ],
     [
