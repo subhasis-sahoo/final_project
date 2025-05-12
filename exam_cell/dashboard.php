@@ -34,8 +34,7 @@ $realCards = [
         'color' => 'mediumseagreen',
         'icon' => 'fa-clipboard-check',
         'content' => [
-            'Total Students' => '124',
-            'Eligible Students' => '118'
+            'Total Students' => '15'
         ],
         'actions' => [
             ['text' => 'Complete Registration', 'icon' => 'fa-check-circle', 'link' => 'complete_registration.php'],
@@ -47,8 +46,7 @@ $realCards = [
         'color' => 'deepskyblue',
         'icon' => 'fa-id-badge',
         'content' => [
-            'Total Students' => '124',
-            'Eligible Students' => '118'
+            'Total Students' => '15'
         ],
         'actions' => [
             ['text' => 'Manage Distribution', 'icon' => 'fa-cog', 'link' => 'manage_admit.php'],

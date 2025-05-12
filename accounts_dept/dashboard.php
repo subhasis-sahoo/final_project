@@ -23,6 +23,11 @@ $formatedStaffRole = $roles[$staffRole];
 // Create a staffrole sessison
 $_SESSION['role'] = $formatedStaffRole;
 
+$applicationCount = 0;
+$allApplications = getAllApplicationsAccordingToRole($formatedStaffRole);
+!$allApplications ? $applicationCount = 0 : $applicationCount = $allApplications->num_rows;
+
+
 // Actual functional cards tailered with data that comes from database
 $realCards = [
     [
@@ -53,7 +58,7 @@ $realCards = [
         'color' => 'orange',
         'icon' => 'fa-box-archive',
         'content' => [
-            'Total Applications' => '3',
+            'Total Applications' => $applicationCount,
         ],
         'actions' => [
             ['text' => 'Review Application', 'icon' => 'fa-magnifying-glass', 'link' => 'review_applications.php']

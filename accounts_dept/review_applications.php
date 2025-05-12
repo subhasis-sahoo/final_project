@@ -88,7 +88,7 @@ $allApplications = getAllApplicationsAccordingToRole($role);
                                     <i class="fas fa-file-alt my-auto"></i> 
                                     <div class=""><?php echo $formattedFileName ?></div>
                                 </a>
-                                <a href="#" class="btn btn-warning text-decoration-none mx-2 my-auto fs-custom" style="width: 11%;">View</a>
+                                <a href="student_accounts_info.php?student_sic=<?php echo $data['student_sic'] ?>" class="btn btn-warning text-decoration-none mx-2 my-auto fs-custom" style="width: 11%;">View</a>
                                 <div class="d-flex gap-2 justify-content-around px-1" style="width: 20%;">
                                     <button id="<?php echo $data['application_id'] ?>" class="btn btn-success border-0 text-white px-4 fs-custom my-auto approve-btn">Approve</button>
                                     <button id="<?php echo $data['application_id'] ?>" class="btn btn-danger border-0 text-white px-4 fs-custom my-auto reject-btn">Reject</button>

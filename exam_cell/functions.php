@@ -8,9 +8,11 @@ function addAdmitCards()
     $deleteData = deleteTableData();
 
     if ($deleteData) {
+        $res = '';
         $accountsSectionApproval = '';
         $deanApproval = '';
         $registredStudentsDetails = getAllApprovedExamRegistrationDetails();
+        // print_r($registredStudentsDetails->num_rows);
 
         while ($data = $registredStudentsDetails->fetch_assoc()) {
             $sic = $data['student_sic'];
@@ -29,9 +31,9 @@ function addAdmitCards()
             $admitCardID = generateSecureRandomString(8);
 
             // Add student data to admit_cards table
-            $res2 = addAdmitCardDetails($admitCardID, $registrationID, $accountsSectionApproval, $deanApproval);
-            return $res2;
+            $res = addAdmitCardDetails($admitCardID, $registrationID, $accountsSectionApproval, $deanApproval);
         }
+        return $res;
     }
 }
 
@@ -47,6 +49,29 @@ function addAdmitCardDetails($admitCardID, $registrationID, $accountsSectionAppr
         $res = $stmt->execute();
 
         return $res;
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    } finally {
+        $conn->close();
+    }
+}
+
+// Return all admit card details into admit_cards table
+function getAllAdmitCardData()
+{
+    $conn = getConnection();
+
+    try {
+        $qry = "SELECT * FROM admit_cards WHERE exam_cell_approval = 'pending'";
+        $stmt = $conn->prepare($qry);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if($result->num_rows > 0) {
+            return $result;
+        } else {
+            return false;
+        }
     } catch (Exception $e) {
         echo $e->getMessage();
     } finally {
@@ -248,3 +273,48 @@ function completeExamRegistration($is_approved, $approval_date, $sic)
         $conn->close();
     }
 }
+
+
+// Retruns a studnet's name and sic using the admit registration id
+function getStudentNameAndSIC($registraionID)
+{
+    $conn = getConnection();
+    // print_r($conn);
+
+    try {
+        $qry = "SELECT s.full_name AS student_name, ex.student_sic AS student_sic FROM admit_cards AS ac JOIN exam_registrations AS ex ON ac.registration_id = ex.registration_id JOIN students AS s ON ex.student_sic = s.sic WHERE ac.registration_id = ?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("s", $registraionID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    } catch (Exception $e) {
+        $e->getMessage();
+    } finally {
+        $conn->close();
+    }
+}
+
+
+// To set exam_cell_approval status in admit_cards table
+function allowToDownlaodAdmitCard($examCellAapproval, $admitCardID)
+{
+    $conn = getConnection();
+
+    try {
+        $qry = "UPDATE admit_cards SET exam_cell_approval = ? WHERE admit_card_id = ?";
+        $stmt = $conn->prepare($qry);
+        $stmt->bind_param("ss", $examCellAapproval, $admitCardID);
+        $res = $stmt->execute();
+
+        return $res;
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    } finally {
+        $conn->close();
+    }
+}
+
+
+?>
