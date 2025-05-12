@@ -1,12 +1,17 @@
 <?php
 session_start();
 // $_SESSION['sic'] = "25MMCI19";
-$_SESSION['sic'] = "25MMCI24";
+// $_SESSION['sic'] = "25MMCI24";
 
 // $_SESSION['sic'] = "12MMUA07";
 // $_SESSION['sic'] = "14MMUF13";
 // $_SESSION['sic'] = "10MMUD04";
 // $_SESSION['sic'] = "12MMUE24";
+
+$sic = $_SESSION['sic'];
+$userName = $_SESSION['username'];
+$role = $_SESSION['role'];
+$photo = $_SESSION['photo'];
 
 ?>
 
@@ -87,17 +92,17 @@ $_SESSION['sic'] = "25MMCI24";
                     <!-- User Profile -->
                     <div class="user-profile dropdown">
                         <a class="dropdown-toggle text-light text-decoration-none d-flex align-items-center gap-2" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../public/assets/Subhasis_Sahoo-Photo.jpg" alt="user_image" height="36px" class="user_image">
-                            <div class="my-auto fs-6 text-white user_name">Subhasis Sahoo</div>
-                            <div class="my-auto fs-6 text-white user_roll">(Student)</div>
+                            <img src="../<?php echo $photo ?>" alt="user_image" height="36px" class="user_image">
+                            <div class="my-auto fs-6 text-white user_name"><?php echo $userName ?></div>
+                            <div class="my-auto fs-6 text-white user_roll">(<?php echo $role ?>)</div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="userDropdown">
                             <li>
                                 <a class="dropdown-item d-flex justify-content-center align-items-center gap-3 p-1" href="">
-                                    <img src="../public/assets/Subhasis_Sahoo-Photo.jpg" alt="" width="50">
+                                    <img src="../<?php echo $photo ?>" alt="" width="50">
                                     <div>
-                                        <div>Subhasis Sahoo (Student)</div>
-                                        <div>23MMCI50</div>
+                                        <div><?php echo $userName ?></div>
+                                        <div><?php echo $sic ?></div>
                                     </div>
                                 </a>
                             </li>
