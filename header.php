@@ -1,6 +1,13 @@
 <?php
 session_start();
-$_SESSION['sic'] = "25MMCI19";
+// $_SESSION['sic'] = "25MMCI19";
+$_SESSION['sic'] = "25MMCI24";
+
+// $_SESSION['sic'] = "12MMUA07";
+// $_SESSION['sic'] = "14MMUF13";
+// $_SESSION['sic'] = "10MMUD04";
+// $_SESSION['sic'] = "12MMUE24";
+
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +27,8 @@ $_SESSION['sic'] = "25MMCI19";
     <link rel="stylesheet" href="../utilities/styles/sidebar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../utilities/styles/common.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../utilities/styles/dashboard.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./styles/registration_card.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="./styles/application_history.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../utilities/styles/registration_card.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../utilities/styles/application_history.css?v=<?php echo time(); ?>">
 
     <style>
         * {

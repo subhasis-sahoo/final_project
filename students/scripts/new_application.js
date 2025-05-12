@@ -47,9 +47,11 @@ newApplicationForm.addEventListener('submit', function (e) {
         if (!isSomeFieldEmpty) {
             // Checking application reason and generate a status log
             if (reasonValue === 'Request for Exam Registration (Unpaid Dues Issue)' || reasonValue === 'Request For Admit card (Unpaid Dues Issue)') {
-                statusLog['stage1'] = { name: 'accounts section', status: "Pending", date: formattedDate, comment: ""}
+                statusLog['stage1'] = { name: 'accounts section', status: "Pending", date: formattedDate, comment: ""};
+                statusLog['maxStage'] = 1;
             } else if (reasonValue === 'Request For Admit card (Low Attendance Issue)' || reasonValue === 'Request For Admit card (Both Reason 2 and 3)') {
-                statusLog['stage1'] = { name: 'faculty advisor', status: "Pending", date: formattedDate, comment: ""}
+                statusLog['stage1'] = { name: 'faculty advisor', status: "Pending", date: formattedDate, comment: ""};
+                statusLog['maxStage'] = 3;
             }
 
             // Append stageLog into formData

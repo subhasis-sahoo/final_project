@@ -104,9 +104,9 @@ $allApplications = getAllApplications($sic);
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Stage</th>
-                                    <th>Status</th>
-                                    <th>Date</th>
+                                    <th class="me-1">Stage</th>
+                                    <th class="me-1">Status</th>
+                                    <th class="me-1">Date</th>
                                     <th>Comment</th>
                                 </tr>
                             </thead>

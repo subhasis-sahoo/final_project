@@ -5,6 +5,11 @@
 
     // Getting the stringfy data
     $examRegistrationData = json_encode(json_decode(file_get_contents('php://input'), true));
+    $data = json_decode(file_get_contents('php://input'), true);
+    // print_r($data['student_due']);
+
+    $data['student_due'] == 0 ? $accountsSectionApproval = 'completed' : $accountsSectionApproval = 'pending';
+    // echo $accountsSectionApproval;
 
     $response = [];
 
@@ -13,7 +18,7 @@
 
     // Function to generate random string for IDs
     $registrationID = generateSecureRandomString(8);
-    $admitCardID = generateSecureRandomString(8);
+    // $admitCardID = generateSecureRandomString(8);
 
     // Check if the student is already registerd
     $is_registred = isStudnetRegistered($sic);
@@ -29,10 +34,10 @@
         ];
     } else {
         // add examRegistration data into exam_registration table
-        $res1 = addExamRegistrationData($registrationID, $sic, $examRegistrationData, $applyDate);
-        $res2 = addAdmitCardDetails($admitCardID, $registrationID);
+        $res1 = addExamRegistrationData($registrationID, $sic, $accountsSectionApproval, $examRegistrationData, $applyDate);
+        // $res2 = addAdmitCardDetails($admitCardID, $registrationID);
 
-        if($res1 && $res2) {
+        if($res1) {
             $response = [
                 "status" => "success",
                 "data" => "",

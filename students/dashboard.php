@@ -19,6 +19,10 @@ $studentDues = getStudentDue($sic)->fetch_assoc()['amount'];
 $examRegistrationLastDate = trim(getExamRegistrationLastDate()->fetch_assoc()['COLUMN_DEFAULT'], "'");
 $examRegistrationLastDate = date('j F, Y', strtotime($examRegistrationLastDate)); 
 
+$applicationCount = 0;
+$allApplications = getAllApplications($sic);
+!$allApplications ? $applicationCount = 0 : $applicationCount = $allApplications->num_rows;
+
 
 // Actual functional cards tailered with data that comes from database
 $realCards = [
@@ -92,9 +96,7 @@ $realCards = [
         'color' => 'orange',
         'icon' => 'fa-box-archive',
         'content' => [
-            'Total Applications' => '3',
-            'Pending' => '1',
-            'Approved' => '2'
+            'Total Applications' => $applicationCount,
         ],
         'actions' => [
             ['text' => 'New Application', 'icon' => 'fa-plus', 'link' => 'new_application.php'],

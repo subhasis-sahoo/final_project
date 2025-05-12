@@ -36,6 +36,8 @@ $apply_date = getExamRegistrationDetails($sic)->fetch_assoc()['apply_date'];
 $timestamp = strtotime($apply_date); // Convert string to timestamp
 $formatted_apply_date = date('d/m/Y', $timestamp);
 
+$accountsSectionApproval = getExamRegistrationDetails($sic)->fetch_assoc()['accounts_section_approval'];
+
 ?>
 
 <div class="container-fluid mt-3 mx-0 px-4 main-container">
@@ -161,7 +163,9 @@ $formatted_apply_date = date('d/m/Y', $timestamp);
                 </div>
                 <div class="position-relative d-flex justify-content-center pt-2" id="requestedBy">
                     <div>HOD (Adminstration)</div>
-                    <span class="position-absolute text-secondary d-none" style="margin-top: -20px;"><?php echo $studentDetailes['full_name'] ?></span>
+                    <span class="position-absolute text-secondary <?php $accountsSectionApproval == 'pending' ? print "d-none" : print "" ?>" style="margin-top: -20px;">
+                        <img src="../public/assets/digital-sign.svg" alt="digital-sign" width="40">
+                    </span>
                 </div>
             </div>
 

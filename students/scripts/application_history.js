@@ -54,24 +54,27 @@ function generateStatusCardBody(statusData) {
     Object.entries(statusData).forEach(([stageKey, stageData]) => {
         let statusColor = '';
 
-        // Checking stageData status
-        if(stageData.status === 'Pending') {
-            statusColor = 'warning';
-        } else if(stageData.status === 'Completed') {
-            statusColor = 'success';
-        } else if(stageData.status === 'Rejected') {
-            statusColor = 'danger';
-        }
+        if (stageKey !== 'maxStage') {
+            // Checking stageData status
+            if (stageData.status === 'Pending') {
+                statusColor = 'warning';
+            } else if (stageData.status === 'Completed') {
+                statusColor = 'success';
+            } else if (stageData.status === 'Rejected') {
+                statusColor = 'danger';
+            }
 
 
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td class="text-capitalize" >${stageData.name}</td>
-            <td class="text-${statusColor}" >${stageData.status}</td>
-            <td>${stageData.date}</td>
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td class="text-capitalize pe-2" >${stageData.name}</td>
+            <td class="text-${statusColor} pe-2" >${stageData.status}</td>
+            <td class="pe-2" >${stageData.date}</td>
             <td>${stageData.comment || '-'}</td>
-        `;
-        statusCardBody.appendChild(row);
+            `;
+
+            statusCardBody.appendChild(row);
+        }
     });
 
 
