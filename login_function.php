@@ -34,7 +34,8 @@ function validateUser($username, $password)
                     "message" => "Login successful",
                     "user_id" => $user['u_sic'],
                     "user_type" => $user['role'],
-                    "user_photo" => $user['profile_photo_path']
+                    "user_photo" => $user['profile_photo_path'],
+                    "user_name" => $user['full_name']
                 ];
             }
         }

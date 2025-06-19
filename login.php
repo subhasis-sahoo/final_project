@@ -19,7 +19,7 @@ $password = isset($_POST['password']) ? trim($_POST['password']) : '';
 if (empty($username) || empty($password)) {
     // Redirect back with error message in same page
     $_SESSION['error'] = "All fields are required";
-    header("Location: login_page.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -50,7 +50,7 @@ if ($response['status'] === 'success') {
 } else {
     // Redirect back with error message if not found
     $_SESSION['error'] = $response['message'];
-    header("Location: login_page.php");
+    header("Location: index.php");
     exit;
 }
 ?>

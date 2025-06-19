@@ -76,7 +76,7 @@ $photo = $_SESSION['photo'];
                 <div class="user-actions d-flex align-items-center">
                     <!-- Notification Icon -->
                     <div class="notification-icon me-3">
-                        <a href="notifications.php" class="position-relative">
+                        <a href="student_dms.php" class="position-relative">
                             <i class="fas fa-bell"></i>
                             <span class="notification-badge">2</span>
                         </a>
